@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Lovify Brand Colors */
+  --color-coral: #FF6B6B;
+  --color-orange: #FF9A56;
+  --color-pink: #FF6BAE;
+  --color-lavender: #B8A9FF;
+  --color-sky: #6BC5FF;
+  --color-mint: #6BFFB8;
+  --color-yellow: #FFD93D;
+  --color-purple: #6C4BEF;
+
+  /* Backgrounds */
+  --color-warm: #FFFBF7;
+  --color-cream: #FFF8F2;
+  --color-dark: #1A1225;
+  --color-card: #FFFFFF;
+
+  /* Text */
+  --color-text: #2D2040;
+  --color-text-sub: #6B5E7B;
+  --color-text-light: #9B8FAD;
+
+  /* Borders */
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-border-light: rgba(0, 0, 0, 0.04);
+
+  /* Semantic */
+  --color-background: #FFFBF7;
+  --color-foreground: #2D2040;
+
+  /* Fonts */
+  --font-heading: var(--font-jakarta);
+  --font-body: var(--font-dm-sans);
+  --font-sans: var(--font-dm-sans);
+}
+
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: initial;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-heading {
+  font-family: var(--font-heading), system-ui, sans-serif;
+}
