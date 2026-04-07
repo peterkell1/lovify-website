@@ -7,7 +7,7 @@ interface LaurelBadgeProps {
 }
 
 export const LaurelBadge = ({ title, subtitle }: LaurelBadgeProps) => (
-  <div className="flex items-center gap-2">
+  <div className="flex items-center gap-1">
     <Image src="/assets/leafs.png" alt="" width={40} height={80} className="-scale-x-100" />
     <div className="flex flex-col items-center text-center">
       <AppleIcon size={16} />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = ["About us", "Blog", "Download App"] as const;
+const MOBILE_LINKS = ["About us", "Blog"] as const;
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -30,22 +31,30 @@ export const Navbar = () => {
           Lovify
         </a>
 
-        <nav
-          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border border-white/20 bg-white/15 px-1 py-1 backdrop-blur-md transition-all duration-300 md:flex"
-        >
+        {/* Desktop — glassmorphic pill (md+) */}
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border border-white/20 bg-white/15 px-1 py-1 backdrop-blur-md transition-all duration-300 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
               className={`font-heading rounded-full text-base font-medium transition-colors ${
                 link === "Download App"
-                  ? "px-5.5 py-3"
-                  : "px-6 py-3"
-              } ${
-                link === "Download App"
-                  ? "bg-[#2223261A] text-white"
-                  : "text-white/90 hover:bg-white/10 hover:text-white"
+                  ? "px-5.5 py-3 bg-[#2223261A] text-white"
+                  : "px-6 py-3 text-white/90 hover:bg-white/10 hover:text-white"
               }`}
+            >
+              {link}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile — flat links right-aligned (<md) */}
+        <nav className="flex items-center gap-6 md:hidden">
+          {MOBILE_LINKS.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+              className="font-heading text-base font-medium text-white"
             >
               {link}
             </a>
