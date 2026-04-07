@@ -11,21 +11,29 @@ const cards = [
     image:
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80",
     title: "Feel the\nRhythm",
+    description:
+      "Music fuels your mood and sharpens focus. Lovify curates playlists that match your energy, helping you stay in the zone whether you're working out or winding down.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80",
     title: "Visualize\nYour Best Self",
+    description:
+      "Guided visualization rewires your mindset for success. Spend just 5 minutes a day picturing your goals and watch your confidence and clarity grow over time.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80",
     title: "Reprogram\nYour Mind",
+    description:
+      "Replace limiting beliefs with empowering ones. Lovify's affirmation engine adapts to your goals, reinforcing positive thought patterns day after day.",
   },
   {
     image:
       "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1200&q=80",
     title: "Manifest\nYour Life",
+    description:
+      "Turn intentions into reality. Track your manifestations, set clear intentions, and let Lovify remind you of the bigger picture when life gets busy.",
   },
 ];
 
@@ -38,26 +46,30 @@ export function ReadyShowcase() {
 
     const cardEls = container.querySelectorAll<HTMLDivElement>("[data-card]");
 
-    const ctx = gsap.context(() => {
-      cardEls.forEach((card, i) => {
-        // Stack cards with increasing z-index so later cards sit on top
-        gsap.set(card, { zIndex: i + 1 });
+    const mm = gsap.matchMedia();
 
-        // Pin each card except the last one
-        if (i < cardEls.length - 1) {
-          ScrollTrigger.create({
-            trigger: card,
-            start: "top 80px",
-            endTrigger: cardEls[cardEls.length - 1],
-            end: "top 80px",
-            pin: true,
-            pinSpacing: false,
-          });
-        }
-      });
-    }, container);
+    mm.add("(min-width: 773px)", () => {
+      const ctx = gsap.context(() => {
+        cardEls.forEach((card, i) => {
+          gsap.set(card, { zIndex: i + 1 });
 
-    return () => ctx.revert();
+          if (i < cardEls.length - 1) {
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top 80px",
+              endTrigger: cardEls[cardEls.length - 1],
+              end: "top 80px",
+              pin: true,
+              pinSpacing: false,
+            });
+          }
+        });
+      }, container);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -114,7 +126,7 @@ export function ReadyShowcase() {
           <div
             key={card.title}
             data-card
-            className="relative flex h-[85vh] max-h-170 items-end overflow-hidden rounded-3xl"
+            className="relative flex h-[55vh] flex-col justify-between overflow-hidden rounded-3xl min-[773px]:h-[85vh] min-[773px]:max-h-170"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -123,13 +135,19 @@ export function ReadyShowcase() {
               className="absolute inset-0 h-full w-full object-cover"
             />
 
-            <div className="relative z-10 m-8 rounded-2xl border border-white/20 bg-white/10 px-8 py-6 backdrop-blur-md sm:m-12 sm:px-10 sm:py-8">
-              <h3
-                className="whitespace-pre-line font-heading text-4xl font-extrabold leading-[1.05] text-white sm:text-6xl md:text-7xl"
-                style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
-              >
-                {card.title}
-              </h3>
+            {/* Title */}
+            <h3
+              className="relative z-10 whitespace-pre-line px-6 pt-6 font-heading text-3xl font-extrabold leading-[1.05] text-white sm:px-10 sm:pt-10 sm:text-5xl md:text-6xl lg:text-7xl"
+              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
+            >
+              {card.title}
+            </h3>
+
+            {/* Description glass card */}
+            <div className="relative z-10 m-4 mb-8 max-w-lg rounded-2xl border border-white/20 bg-white/20 px-5 py-4 backdrop-blur-xl sm:m-8 sm:mb-12 sm:px-8 sm:py-6">
+              <p className="text-sm font-medium leading-relaxed text-white sm:text-base">
+                {card.description}
+              </p>
             </div>
           </div>
         ))}
