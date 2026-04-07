@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { AppleIcon } from "@/components/ui/AppleIcon";
-import { StaggerButton } from "@/components/ui/StaggerButton";
-import { LaurelBadge } from "@/components/ui/LaurelBadge";
+import { AppleIcon } from "@/components/ui/icons/AppleIcon";
+import { StaggerButton } from "@/components/ui/buttons/StaggerButton";
+import { LaurelBadge } from "@/components/ui/badges/LaurelBadge";
 
 export const Hero = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

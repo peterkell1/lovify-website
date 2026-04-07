@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AppleIcon } from "./AppleIcon";
+import { AppleIcon } from "@/components/ui/icons/AppleIcon";
 
 interface LaurelBadgeProps {
   title: string;

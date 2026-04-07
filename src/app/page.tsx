@@ -1,10 +1,11 @@
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { PhoneShowcase } from "@/components/PhoneShowcase";
-import { ReadyShowcase } from "@/components/ReadyShowcase";
-import { MusicShowcase } from "@/components/MusicShowcase";
-import { DesignedFor } from "@/components/DesignedFor";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { Navbar } from "@/components/layout/header/Navbar";
+import { Hero } from "@/components/sections/Hero";
+import { PhoneShowcase } from "@/components/sections/PhoneShowcase";
+import { ReadyShowcase } from "@/components/sections/ReadyShowcase";
+import { MusicShowcase } from "@/components/sections/MusicShowcase";
+import { DesignedFor } from "@/components/sections/DesignedFor";
+import { TrustedSection } from "@/components/sections/TrustedSection";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
         <ReadyShowcase />
         <MusicShowcase />
         <DesignedFor />
+        <TrustedSection />
       </main>
     </>
   );
