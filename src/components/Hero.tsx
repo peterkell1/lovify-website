@@ -1,57 +1,84 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import gsap from "gsap";
 import { AppleIcon } from "@/components/ui/AppleIcon";
 import { StaggerButton } from "@/components/ui/StaggerButton";
 import { LaurelBadge } from "@/components/ui/LaurelBadge";
 
-export const Hero = () => (
-  <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 py-24 md:justify-end md:pb-18 md:pt-0">
-    <Image src="/assets/bg.avif" alt="" fill priority className="object-cover" />
+export const Hero = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-    <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
-      >
-        Transform Your Life Through Music
-      </motion.h1>
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from("[data-hero='heading']", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+      gsap.from("[data-hero='subtitle']", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.3,
+      });
+      gsap.from("[data-hero='cta']", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.5,
+      });
+      gsap.from("[data-hero='badges']", {
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.8,
+      });
+    }, sectionRef);
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-        className="mx-auto mt-6 max-w-4xl text-lg leading-relaxed text-white/80"
-      >
-        The first app that uses personalized music and visualization to
-        reprogram your subconscious mind and create the life you want.
-      </motion.p>
+    return () => ctx.revert();
+  }, []);
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="mt-8"
-      >
-        <StaggerButton
-          text="Download App"
-          href="#start"
-          icon={<AppleIcon size={18} />}
-        />
-      </motion.div>
+  return (
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 py-24 md:justify-end md:pb-18 md:pt-0"
+    >
+      <Image src="/assets/bg.avif" alt="" fill priority className="object-cover" />
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-        className="mt-10 flex items-center justify-center gap-4 text-white sm:gap-8"
-      >
-        <LaurelBadge title="Apple Watch" subtitle="Spotlight" />
-        <LaurelBadge title="New and" subtitle="Noteworthy" />
-      </motion.div>
-    </div>
-  </section>
-);
+      <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
+        <h1
+          data-hero="heading"
+          className="font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          Transform Your Life Through Music
+        </h1>
+
+        <p
+          data-hero="subtitle"
+          className="mx-auto mt-6 max-w-4xl text-lg leading-relaxed text-white/80"
+        >
+          The first app that uses personalized music and visualization to
+          reprogram your subconscious mind and create the life you want.
+        </p>
+
+        <div data-hero="cta" className="mt-8">
+          <StaggerButton
+            text="Download App"
+            href="#start"
+            icon={<AppleIcon size={18} />}
+          />
+        </div>
+
+        <div
+          data-hero="badges"
+          className="mt-10 flex items-center justify-center gap-4 text-white sm:gap-8"
+        >
+          <LaurelBadge title="Apple Watch" subtitle="Spotlight" />
+          <LaurelBadge title="New and" subtitle="Noteworthy" />
+        </div>
+      </div>
+    </section>
+  );
+};

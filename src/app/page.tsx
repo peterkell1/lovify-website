@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { PhoneShowcase } from "@/components/PhoneShowcase";
+import { ReadyShowcase } from "@/components/ReadyShowcase";
+import { MusicShowcase } from "@/components/MusicShowcase";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
       <main>
         <Hero />
         <PhoneShowcase />
+        <ReadyShowcase />
+        <MusicShowcase />
       </main>
     </>
   );
