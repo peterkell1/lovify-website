@@ -37,7 +37,7 @@ const cards = [
   },
 ];
 
-export function ReadyShowcase() {
+export const ReadyShowcase = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

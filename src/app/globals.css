@@ -68,3 +68,22 @@ body {
 .font-heading {
   font-family: var(--font-heading), system-ui, sans-serif;
 }
+
+/* Music Showcase Swiper */
+.music-swiper {
+  padding-bottom: 50px !important;
+}
+.music-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+.music-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all 0.3s ease;
+  margin: 0 5px !important;
+}
+.music-swiper .swiper-pagination-bullet-active {
+  background: #9ca3af;
+}

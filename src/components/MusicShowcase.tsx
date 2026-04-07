@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -46,10 +45,7 @@ const slides = [
   },
 ];
 
-export function MusicShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<SwiperType | null>(null);
-
+export const MusicShowcase = () => {
   return (
     <section className="w-full overflow-hidden bg-white py-24">
       {/* Header */}
@@ -89,17 +85,15 @@ export function MusicShowcase() {
       {/* Swiper */}
       <div className="mt-16">
         <Swiper
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           grabCursor
           centeredSlides
           loop
+          slideToClickedSlide
           initialSlide={1}
-          slidesPerView={1.4}
-          spaceBetween={16}
+          slidesPerView={1.25}
+          spaceBetween={12}
           breakpoints={{
+            480: { slidesPerView: 1.4, spaceBetween: 16 },
             640: { slidesPerView: 1.8, spaceBetween: 24 },
             1024: { slidesPerView: 2.6, spaceBetween: 32 },
             1280: { slidesPerView: 3, spaceBetween: 40 },
@@ -113,77 +107,47 @@ export function MusicShowcase() {
           modules={[Pagination, Autoplay]}
           className="music-swiper"
         >
-          {slides.map((slide, i) => (
+          {slides.map((slide) => (
             <SwiperSlide key={slide.title}>
-              <div
-                className="cursor-pointer pb-4"
-                onClick={() => swiperRef.current?.slideToLoop(i)}
-              >
-                {/* Image card */}
-                <div
-                  className="relative overflow-hidden rounded-2xl transition-all duration-500 sm:rounded-3xl"
-                  style={{
-                    transform: activeIndex === i ? "scale(1)" : "scale(0.9)",
-                    opacity: activeIndex === i ? 1 : 0.45,
-                  }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="aspect-3/2 w-full object-cover"
-                  />
-                </div>
+              {({ isActive }) => (
+                <div className="pb-4">
+                  {/* Image card */}
+                  <div
+                    className={`relative overflow-hidden rounded-2xl transition-all duration-500 sm:rounded-3xl ${
+                      isActive ? "scale-100 opacity-100" : "scale-90 opacity-45"
+                    }`}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      width={800}
+                      height={533}
+                      sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 33vw"
+                      className="aspect-3/2 w-full object-cover"
+                    />
+                  </div>
 
-                {/* Text below card */}
-                <div
-                  className="mt-5 text-center transition-all duration-500"
-                  style={{
-                    opacity: activeIndex === i ? 1 : 0,
-                    transform:
-                      activeIndex === i
-                        ? "translateY(0)"
-                        : "translateY(8px)",
-                  }}
-                >
-                  <h3 className="text-[22px] font-bold text-[#222326] sm:text-[28px] md:text-[32px]"
-                    style={{ fontFamily: "Archivo, sans-serif" }}
+                  {/* Text below card */}
+                  <div
+                    className={`mt-5 text-center transition-all duration-500 ${
+                      isActive
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-2 opacity-0"
+                    }`}
                   >
-                    {slide.title}
-                  </h3>
-                  <p
-                    className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#616265] sm:text-base md:text-[20px] md:leading-relaxed"
-                    style={{ fontFamily: "Archivo, sans-serif" }}
-                  >
-                    {slide.description}
-                  </p>
+                    <h3 className="font-heading text-[22px] font-bold text-text sm:text-[28px] md:text-[32px]">
+                      {slide.title}
+                    </h3>
+                    <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-text-sub sm:text-base md:text-xl md:leading-relaxed">
+                      {slide.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-
-      {/* Custom styles */}
-      <style jsx global>{`
-        .music-swiper {
-          padding-bottom: 50px !important;
-        }
-        .music-swiper .swiper-pagination {
-          bottom: 0 !important;
-        }
-        .music-swiper .swiper-pagination-bullet {
-          width: 10px;
-          height: 10px;
-          background: #d1d5db;
-          opacity: 1;
-          transition: all 0.3s ease;
-          margin: 0 5px !important;
-        }
-        .music-swiper .swiper-pagination-bullet-active {
-          background: #9ca3af;
-        }
-      `}</style>
     </section>
   );
 }

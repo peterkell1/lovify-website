@@ -22,14 +22,16 @@ export const metadata: Metadata = {
     "The first app that uses personalized music and visualization to reprogram your subconscious mind and create the life you want.",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en" className={`${jakarta.variable} ${dmSans.variable}`}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;
