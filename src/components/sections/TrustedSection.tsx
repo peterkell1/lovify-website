@@ -69,7 +69,7 @@ const MosaicImage = ({
 
 const TextBlock = ({ ref }: { ref?: React.Ref<HTMLDivElement> }) => (
   <div ref={ref} className="px-5 text-center">
-    <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-[40px] md:leading-[1.2]">
+    <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-4xl md:leading-[1.2]">
       Crafted with Care.
       <br />
       Loved Everywhere.
@@ -118,22 +118,24 @@ export const TrustedSection = () => {
     <section className="w-full overflow-hidden bg-white px-4 py-24">
       {/* Desktop */}
       <div className="hidden md:block" ref={containerRef}>
-        <div className="mx-auto flex max-w-5xl items-start justify-center gap-2.5">
-          {columns.map((col, ci) => (
-            <div
-              key={ci}
-              ref={(el) => { colRefs.current[ci] = el; }}
-              className="flex flex-1 flex-col gap-2.5"
-              style={{ marginTop: col.mt }}
-            >
-              {col.cards.map((card, ii) => (
-                <MosaicImage key={ii} src={card.src} className="w-full" aspect={card.aspect} />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="mx-auto mt-12 max-w-lg">
-          <TextBlock ref={textRef} />
+        <div className="relative pb-44 lg:pb-32">
+          <div className="mx-auto flex max-w-5xl items-start justify-center gap-2.5">
+            {columns.map((col, ci) => (
+              <div
+                key={ci}
+                ref={(el) => { colRefs.current[ci] = el; }}
+                className={`flex flex-1 flex-col gap-2.5${ci === 0 || ci === 7 ? " hidden lg:flex" : ""}`}
+                style={{ marginTop: col.mt }}
+              >
+                {col.cards.map((card, ii) => (
+                  <MosaicImage key={ii} src={card.src} className="w-full" aspect={card.aspect} />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-lg">
+            <TextBlock ref={textRef} />
+          </div>
         </div>
       </div>
 
