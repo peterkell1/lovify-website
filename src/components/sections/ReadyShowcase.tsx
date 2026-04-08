@@ -77,7 +77,7 @@ export const ReadyShowcase = () => {
       {/* Header */}
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div
-          className="mb-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-lg font-medium"
+          className="mb-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-3 py-1 text-lg font-medium"
           style={{
             boxShadow:
               "0 0.0625rem 2rem #be362626, 0 0.1875rem 0.75rem #be362633",
@@ -107,26 +107,26 @@ export const ReadyShowcase = () => {
               </clipPath>
             </defs>
           </svg>
-          <span className="text-sm font-medium text-text-sub">Preview</span>
+          <span className="text-lg font-medium text-black">Preview</span>
         </div>
 
-        <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-5xl">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-[2.5rem] md:text-[32px]">
           Ready When You Are
         </h2>
 
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-text-sub sm:text-lg">
+        <p className="mt-4 max-w-xl text-xl leading-relaxed font-medium text-text-sub">
           Start with one step. One log at a time. Lovify meets you where you are
           and helps you move forward with clarity and confidence.
         </p>
       </div>
 
       {/* Cards */}
-      <div ref={containerRef} className="mx-auto mt-16 flex max-w-5xl flex-col gap-8">
+      <div ref={containerRef} className="mx-auto mt-16 flex max-w-[76rem] flex-col gap-8">
         {cards.map((card) => (
           <div
             key={card.title}
             data-card
-            className="relative flex h-[55vh] flex-col justify-between overflow-hidden rounded-3xl min-[773px]:h-[85vh] min-[773px]:max-h-170"
+            className="relative flex h-[55vh] w-full flex-col justify-between overflow-hidden rounded-[2.5rem] min-[773px]:h-[85vh] min-[773px]:max-h-170"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -135,19 +135,22 @@ export const ReadyShowcase = () => {
               className="absolute inset-0 h-full w-full object-cover"
             />
 
-            {/* Title */}
-            <h3
-              className="relative z-10 whitespace-pre-line px-6 pt-6 font-heading text-3xl font-extrabold leading-[1.05] text-white sm:px-10 sm:pt-10 sm:text-5xl md:text-6xl lg:text-7xl"
-              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
-            >
-              {card.title}
-            </h3>
+            <div className="p-16 relative z-10 h-full w-full ">
+              {/* Title */}
+              <h3
+                className="relative z-10 whitespace-pre-line font-heading text-3xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-8xl"
+                style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
+              >
+                {card.title}
+              </h3>
 
-            {/* Description glass card */}
-            <div className="relative z-10 m-4 mb-8 max-w-lg rounded-2xl border border-white/20 bg-white/20 px-5 py-4 backdrop-blur-xl sm:m-8 sm:mb-12 sm:px-8 sm:py-6">
-              <p className="text-sm font-medium leading-relaxed text-white sm:text-base">
-                {card.description}
-              </p>
+              {/* Description glass card */}
+              <div className="relative z-10 mt-auto max-w-lg rounded-3xl border-2 border-white/20 bg-white/20 px-5 py-4 backdrop-blur-xl sm:px-8 sm:py-6"
+              style={{boxShadow: "inset 0 0 .25rem #ffffff4d"}}>
+                <p className="text-xl font-semibold leading-relaxed text-white">
+                  {card.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
