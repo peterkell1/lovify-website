@@ -47,56 +47,29 @@ const slides = [
 
 export const MusicShowcase = () => {
   return (
-    <section className="w-full overflow-hidden bg-white py-24">
+    <section className="w-full overflow-hidden bg-white">
       {/* Header */}
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
-        <div
-          className="mb-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-lg font-medium"
-          style={{
-            boxShadow:
-              "0 0.0625rem 2rem #be362626, 0 0.1875rem 0.75rem #be362633",
-          }}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14 2v8.5a2.5 2.5 0 1 1-2-2.45V4.7L6 5.9v6.6a2.5 2.5 0 1 1-2-2.45V3l10-1Z"
-              fill="#616265"
-            />
-          </svg>
-          <span className="text-sm font-medium text-text-sub">Explore</span>
-        </div>
-
-        <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-5xl">
+      <div className="mx-auto flex max-w-2xl flex-col items-center px-6 text-center">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
           Everything You Need to Grow
         </h2>
-
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-text-sub sm:text-lg">
-          Music, visualization, affirmations, and manifestation — all in one
-          place, personalized to help you become who you want to be.
-        </p>
       </div>
 
       {/* Swiper */}
-      <div className="mt-16">
+      <div className="mt-14">
         <Swiper
           grabCursor
           centeredSlides
           loop
           slideToClickedSlide
           initialSlide={1}
-          slidesPerView={1.25}
-          spaceBetween={12}
+          slidesPerView={1.15}
+          spaceBetween={16}
           breakpoints={{
-            480: { slidesPerView: 1.4, spaceBetween: 16 },
-            640: { slidesPerView: 1.8, spaceBetween: 24 },
-            1024: { slidesPerView: 2.6, spaceBetween: 32 },
-            1280: { slidesPerView: 3, spaceBetween: 40 },
+            480: { slidesPerView: 1.2, spaceBetween: 20 },
+            640: { slidesPerView: 1.3, spaceBetween: 24 },
+            1024: { slidesPerView: 1.5, spaceBetween: 32 },
+            1280: { slidesPerView: 2.125, spaceBetween: 40 },
           }}
           autoplay={{
             delay: 4000,
@@ -110,12 +83,10 @@ export const MusicShowcase = () => {
           {slides.map((slide) => (
             <SwiperSlide key={slide.title}>
               {({ isActive }) => (
-                <div className="pb-4">
+                <div className={`pb-4 ${isActive ? "opacity-100" : "opacity-40"}`}>
                   {/* Image card */}
                   <div
-                    className={`relative overflow-hidden rounded-2xl transition-all duration-500 sm:rounded-3xl ${
-                      isActive ? "scale-100 opacity-100" : "scale-90 opacity-45"
-                    }`}
+                    className={`relative overflow-hidden rounded-[2.5rem] transition-all duration-500`}
                   >
                     <Image
                       src={slide.image}
@@ -123,22 +94,21 @@ export const MusicShowcase = () => {
                       width={800}
                       height={533}
                       sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 33vw"
-                      className="aspect-3/2 w-full object-cover"
+                      className="aspect-[7.74/5.22] w-full object-cover"
                     />
                   </div>
 
                   {/* Text below card */}
                   <div
-                    className={`mt-5 text-center transition-all duration-500 ${
-                      isActive
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-2 opacity-0"
-                    }`}
+                    className={`mt-8 text-center transition-all duration-500 ${isActive
+                      ? ""
+                      : ""
+                      }`}
                   >
-                    <h3 className="font-heading text-[22px] font-bold text-text sm:text-[28px] md:text-[32px]">
+                    <h3 className="font-heading text-2xl font-semibold text-black sm:text-[2.5rem] md:text-[32px]">
                       {slide.title}
                     </h3>
-                    <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-text-sub sm:text-base md:text-xl md:leading-relaxed">
+                    <p className="mx-auto mt-2 max-w-2xl text-xl leading-relaxed text-text-sub font-medium">
                       {slide.description}
                     </p>
                   </div>

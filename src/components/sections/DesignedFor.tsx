@@ -28,22 +28,22 @@ const cards = [
 export const DesignedFor = () => (
   <section className="w-full bg-white px-6 py-24">
     {/* Header */}
-    <div className="mx-auto max-w-3xl text-center">
-      <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-5xl">
+    <div className="mx-auto max-w-2xl text-center">
+      <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
         Designed for Daily Life
       </h2>
-      <p className="mt-4 text-base leading-relaxed text-text-sub sm:text-lg">
+      <p className="mt-4 text-xl leading-relaxed text-text-sub font-medium">
         From music and mindset to habits and manifestation, Lovify helps you
         stay in sync with yourself and build routines that support your growth.
       </p>
     </div>
 
     {/* 2×2 Grid */}
-    <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className="mx-auto mt-14 grid max-w-6xl lg:px-4 grid-cols-1 gap-3 sm:grid-cols-2">
       {cards.map((card) => (
         <div
           key={card.label}
-          className="relative flex aspect-3/4 flex-col items-center overflow-hidden rounded-3xl sm:aspect-4/5"
+          className="relative flex aspect-3/4 flex-col items-center overflow-hidden rounded-[2.5rem] sm:aspect-2/3"
         >
           {/* Background image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -58,12 +58,12 @@ export const DesignedFor = () => (
 
           {/* Text content */}
           <div className="relative z-10 flex flex-col items-center pt-10 text-center sm:pt-14">
-            <span className="text-sm font-medium tracking-wide text-white/80 sm:text-base">
+            <span className="text-2xl font-semibold tracking-wide text-[#fff9]">
               {card.label}
             </span>
             <h3
-              className="mt-2 whitespace-pre-line font-heading text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl"
-              style={{ textShadow: "0 2px 16px rgba(0,0,0,0.25)" }}
+              className="mt-2 whitespace-pre-line font-heading text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-[2.5rem]"
+              style={{ textShadow: "0 .25rem .5rem #00000026" }}
             >
               {card.title}
             </h3>

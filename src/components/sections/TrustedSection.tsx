@@ -27,12 +27,12 @@ const images = {
 
 const columns: { mt: number; cards: { aspect: string; src: string }[] }[] = [
   { mt: 100, cards: [{ aspect: "3/4", src: images.yoga }, { aspect: "4/5", src: images.meditation }] },
-  { mt: 50, cards: [{ aspect: "3/4", src: images.running }, { aspect: "1/1", src: images.nature }, { aspect: "3/4", src: images.stretch }] },
-  { mt: 10, cards: [{ aspect: "3/5", src: images.mindful }, { aspect: "3/5", src: images.peace }] },
+  { mt: 50, cards: [{ aspect: "1/1", src: images.running }, { aspect: "1/1", src: images.nature }, { aspect: "1/1", src: images.stretch }] },
+  { mt: 90, cards: [{ aspect: "2/5", src: images.mindful }] },
   { mt: -20, cards: [{ aspect: "2/5", src: images.beach }] },
   { mt: -20, cards: [{ aspect: "2/5", src: images.sunset }] },
-  { mt: 10, cards: [{ aspect: "3/5", src: images.concert }, { aspect: "3/5", src: images.splash }] },
-  { mt: 50, cards: [{ aspect: "3/4", src: images.fitness }, { aspect: "1/1", src: images.landscape }, { aspect: "3/4", src: images.calm }] },
+  { mt: 90, cards: [{ aspect: "2/5", src: images.concert }] },
+  { mt: 50, cards: [{ aspect: "1/1", src: images.fitness }, { aspect: "1/1", src: images.landscape }, { aspect: "1/1", src: images.calm }] },
   { mt: 100, cards: [{ aspect: "3/4", src: images.calm }, { aspect: "4/5", src: images.ocean }] },
 ];
 
@@ -53,7 +53,7 @@ const MosaicImage = ({
   aspect?: string;
 }) => (
   <div
-    className={`overflow-hidden rounded-2xl ${className ?? ""}`}
+    className={`overflow-hidden rounded-4xl ${className ?? ""}`}
     style={aspect ? { aspectRatio: aspect } : undefined}
   >
     <Image
@@ -115,11 +115,11 @@ export const TrustedSection = () => {
   }, []);
 
   return (
-    <section className="w-full overflow-hidden bg-white px-4 pt-24 pb-10">
+    <section className="w-full overflow-hidden bg-white px-4 py-24">
       {/* Desktop */}
       <div className="hidden md:block" ref={containerRef}>
         <div className="relative pb-44 lg:pb-32">
-          <div className="mx-auto flex max-w-5xl items-start justify-center gap-2.5">
+          <div className="mx-auto flex max-w-7xl xl:px-2 items-start justify-center gap-2.5">
             {columns.map((col, ci) => (
               <div
                 key={ci}
@@ -133,7 +133,7 @@ export const TrustedSection = () => {
               </div>
             ))}
           </div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-lg">
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 max-w-lg">
             <TextBlock ref={textRef} />
           </div>
         </div>
