@@ -26,10 +26,10 @@ const sections = [
       { src: `${CDN}/68bc1a457e73b0da2a032a43_phone%20item%2001%2004.svg`, alt: "Heart logo", className: "bottom-[8%] right-[24%] rotate-[7deg]" },
     ],
     mobileItems: [
-      { src: `${CDN}/68bd3509212540550b3cce50_Phone%20Mobile%20Item%2001%2002.avif`, alt: "Lungs icon" },
-      { src: `${CDN}/68bd350a3dcc23923f34a7ef_Phone%20Mobile%20Item%2001%2004.avif`, alt: "Heart rate 52.5 bpm" },
-      { src: `${CDN}/68bd350bd2a2cfbea3c14325_Phone%20Mobile%20Item%2001%2003.avif`, alt: "HRV 50.4ms" },
-      { src: `${CDN}/68bd3509f0c25110620cf894_Phone%20Mobile%20Item%2001%2001.avif`, alt: "Pulse icon" },
+      { src: `${CDN}/68bd3509212540550b3cce50_Phone%20Mobile%20Item%2001%2002.avif`, alt: "Lungs icon", className: "top-[8%] left-[10%] rotate-[6deg] !max-w-24" },
+      { src: `${CDN}/68bd350a3dcc23923f34a7ef_Phone%20Mobile%20Item%2001%2004.avif`, alt: "Heart rate 52.5 bpm", className: "top-[-5%] -right-[14%] rotate-[10deg]" },
+      { src: `${CDN}/68bd350bd2a2cfbea3c14325_Phone%20Mobile%20Item%2001%2003.avif`, alt: "HRV 50.4ms", className: "bottom-[3.5%] left-[4%] -rotate-[4deg]" },
+      { src: `${CDN}/68bd3509f0c25110620cf894_Phone%20Mobile%20Item%2001%2001.avif`, alt: "Pulse icon", className: "bottom-[28%] right-[6%] -rotate-[4deg] !max-w-24" },
     ],
   },
   {
@@ -49,10 +49,10 @@ const sections = [
       { src: `${CDN}/68bc1a457e73b0da2a032a50_phone%2002%2005.avif`, alt: "Breakfast waffle with berries", className: "bottom-[-2%] right-[15%] -rotate-[3deg] max-w-[15.5rem]" },
     ],
     mobileItems: [
-      { src: `${CDN}/68bd3d6b98c7147394e57661_Phone%20Mobile%20Items%2002%2001.avif`, alt: "Pie chart icon" },
-      { src: `${CDN}/68bd3d6b0cc400a6b093b505_Phone%20Mobile%20Items%2002%2004.avif`, alt: "Nutritional goals display" },
-      { src: `${CDN}/68bd3d6b4e207f61a28e2d4c_Phone%20Mobile%20Items%2002%2003.avif`, alt: "Macro balance" },
-      { src: `${CDN}/68bd3d6b558e9c33b7c7559b_Phone%20Mobile%20Items%2002%2002.avif`, alt: "Food tracking" },
+      { src: `${CDN}/68bd3d6b98c7147394e57661_Phone%20Mobile%20Items%2002%2001.avif`, alt: "Pie chart icon", className: "top-[8%] left-[10%] rotate-[6deg] !max-w-24" },
+      { src: `${CDN}/68bd3d6b0cc400a6b093b505_Phone%20Mobile%20Items%2002%2004.avif`, alt: "Nutritional goals display", className: "top-[-5%] -right-[14%] rotate-[10deg]" },
+      { src: `${CDN}/68bd3d6b4e207f61a28e2d4c_Phone%20Mobile%20Items%2002%2003.avif`, alt: "Macro balance", className: "bottom-[3.5%] left-[4%] -rotate-[4deg]" },
+      { src: `${CDN}/68bd3d6b558e9c33b7c7559b_Phone%20Mobile%20Items%2002%2002.avif`, alt: "Food tracking", className: "bottom-[28%] right-[6%] -rotate-[4deg] !max-w-24" },
     ],
   },
   {
@@ -72,10 +72,10 @@ const sections = [
       { src: `${CDN}/68bc1a457e73b0da2a032a6a_phone%2003%2001.svg`, alt: "", className: "bottom-0 right-[18%] rotate-[10deg]" },
     ],
     mobileItems: [
-      { src: `${CDN}/68bd3ecf0e5485bb6d999d32_Phone%20Mobile%20Items%2003%2001.avif`, alt: "" },
-      { src: `${CDN}/68bd3ecf0df74d5bdf163212_Phone%20Mobile%20Items%2003%2003.avif`, alt: "" },
-      { src: `${CDN}/68bd3ecfe4df332308c13e8d_Phone%20Mobile%20Items%2003%2004.avif`, alt: "" },
-      { src: `${CDN}/68bd3ecfb82e6ba6402fc9b3_Phone%20Mobile%20Items%2003%2002.avif`, alt: "" },
+      { src: `${CDN}/68bd3ecf0e5485bb6d999d32_Phone%20Mobile%20Items%2003%2001.avif`, alt: "", className: "top-[8%] left-[10%] rotate-[6deg] !max-w-24" },
+      { src: `${CDN}/68bd3ecf0df74d5bdf163212_Phone%20Mobile%20Items%2003%2003.avif`, alt: "", className: "top-[-5%] -right-[14%] rotate-[10deg]" },
+      { src: `${CDN}/68bd3ecfe4df332308c13e8d_Phone%20Mobile%20Items%2003%2004.avif`, alt: "", className: "bottom-[3.5%] left-[4%] -rotate-[4deg]" },
+      { src: `${CDN}/68bd3ecfb82e6ba6402fc9b3_Phone%20Mobile%20Items%2003%2002.avif`, alt: "", className: "bottom-[28%] right-[6%] -rotate-[4deg] !max-w-24" },
     ],
   },
   {
@@ -95,10 +95,10 @@ const sections = [
       { src: `${CDN}/68bc1a457e73b0da2a032a71_phone%2004%2004.svg`, alt: "", className: "bottom-0 right-[12%] -rotate-[3deg]" },
     ],
     mobileItems: [
-      { src: `${CDN}/68bd3f7c05de00e06b4026ab_Phone%20Mobile%20Items%2004%2002.avif`, alt: "" },
-      { src: `${CDN}/68bd3f7cb70c6bf9ec3112c9_Phone%20Mobile%20Items%2004%2003.avif`, alt: "" },
-      { src: `${CDN}/68bd3f7cfacc89f34cffa609_Phone%20Mobile%20Items%2004%2004.avif`, alt: "" },
-      { src: `${CDN}/68bd3f7c1bcd863f212b2927_Phone%20Mobile%20Items%2004%2001.avif`, alt: "" },
+      { src: `${CDN}/68bd3f7c05de00e06b4026ab_Phone%20Mobile%20Items%2004%2002.avif`, alt: "", className: "top-[8%] left-[10%] rotate-[6deg] !max-w-24" },
+      { src: `${CDN}/68bd3f7cb70c6bf9ec3112c9_Phone%20Mobile%20Items%2004%2003.avif`, alt: "", className: "top-[-5%] -right-[14%] rotate-[10deg]" },
+      { src: `${CDN}/68bd3f7cfacc89f34cffa609_Phone%20Mobile%20Items%2004%2004.avif`, alt: "", className: "bottom-[3.5%] left-[4%] -rotate-[4deg]" },
+      { src: `${CDN}/68bd3f7c1bcd863f212b2927_Phone%20Mobile%20Items%2004%2001.avif`, alt: "", className: "bottom-[28%] right-[6%] -rotate-[4deg] !max-w-24" },
     ],
   },
 ];
@@ -476,7 +476,7 @@ export const PhoneShowcase = () => {
                         src={item.src}
                         alt={item.alt}
                         loading="lazy"
-                        className={`absolute max-w-30 ${getMobilePosition(i)}`}
+                        className={`absolute max-w-50 ${item.className}`}
                       />
                     ))}
                   </div>
@@ -511,13 +511,3 @@ export const PhoneShowcase = () => {
     </section>
   );
 };
-
-function getMobilePosition(index: number): string {
-  const positions = [
-    "top-[10%] left-[2%]",
-    "top-[5%] right-[2%]",
-    "bottom-[15%] right-[2%]",
-    "bottom-[10%] left-[2%]",
-  ];
-  return positions[index] || positions[0];
-}
