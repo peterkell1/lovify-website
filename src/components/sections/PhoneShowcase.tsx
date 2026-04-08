@@ -131,68 +131,35 @@ export const PhoneShowcase = () => {
 
     const headers = el.querySelectorAll<HTMLDivElement>("[data-phone-header]");
     const screenTrack = el.querySelector<HTMLDivElement>("[data-screen-track]");
-    const triggers = el.querySelectorAll<HTMLDivElement>("[data-phone-trigger]");
 
-    if (!screenTrack || !triggers.length) return;
-
-    const triggerMap = new Map<number, HTMLDivElement>();
-    triggers.forEach((t) => triggerMap.set(Number(t.dataset.phoneTrigger), t));
+    if (!screenTrack) return;
 
     const mm = gsap.matchMedia();
 
     // ── Desktop animations (768px+) ──
     mm.add("(min-width: 768px)", () => {
       const ctx = gsap.context(() => {
-        let currentStep = 0;
+        // Set initial header states — only the first is visible
+        headers.forEach((h, i) => {
+          gsap.set(h, { autoAlpha: i === 0 ? 1 : 0 });
+        });
 
-        // Screen slide + header toggle (trigger-based, not scrub)
-        for (let i = 2; i <= 4; i++) {
-          const trigger = triggerMap.get(i);
-          if (!trigger) continue;
-
-          const prevHeader = el.querySelector<HTMLDivElement>(
-            `[data-phone-header="${i - 1}"]`
-          );
-          const nextHeader = el.querySelector<HTMLDivElement>(
-            `[data-phone-header="${i}"]`
-          );
-
-          ScrollTrigger.create({
-            trigger,
+        const master = gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
             start: "top top",
-            onEnter: () => {
-              currentStep = i - 1;
-              gsap.to(screenTrack, {
-                yPercent: -25 * currentStep,
-                duration: 0.75,
-                ease: "power2.out",
-              });
-              headers.forEach((h) => h.classList.remove("active"));
-              nextHeader?.classList.add("active");
-            },
-            onEnterBack: () => {
-              currentStep = i - 2;
-              gsap.to(screenTrack, {
-                yPercent: -25 * currentStep,
-                duration: 0.5,
-                ease: "power2.out",
-              });
-              headers.forEach((h) => h.classList.remove("active"));
-              prevHeader?.classList.add("active");
-            },
-          });
-        }
+            end: "+=800%",
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        });
 
-        // Floating UI items — scrub-linked fan-out from center, hold, then fade-out
-        for (let i = 1; i <= 4; i++) {
-          const startTrigger = triggerMap.get(i);
-          const endTrigger = triggerMap.get(i + 1);
-          if (!startTrigger || !endTrigger) continue;
-
+        for (let i = 0; i < 4; i++) {
+          const sectionIdx = i + 1;
           const items = el.querySelectorAll<HTMLElement>(
-            `[data-phone-items-wrap="${i}"] [data-phone-item]`
+            `[data-phone-items-wrap="${sectionIdx}"] [data-phone-item]`
           );
-          if (!items.length) continue;
 
           // Capture each item's final CSS position and rotation before animating
           const states = Array.from(items).map((item) => {
@@ -218,14 +185,12 @@ export const PhoneShowcase = () => {
             });
           });
 
-          // Build scrub timeline: fan-out → hold → fade-out
-          const tl = gsap.timeline({
+          // Fan out to final positions
+          const fanIn = gsap.timeline({
             defaults: { duration: 1.1, ease: "power3.out" },
           });
-
-          // Fan out to final positions
           states.forEach((s, idx) => {
-            tl.to(
+            fanIn.to(
               s.el,
               {
                 xPercent: 0,
@@ -243,25 +208,58 @@ export const PhoneShowcase = () => {
             );
           });
 
+          master.add(fanIn);
+
           // Hold visible
-          tl.to({}, { duration: 0.6 });
+          master.to({}, { duration: 0.8 });
 
-          // Fade out
-          tl.to(
-            Array.from(items),
-            { opacity: 0, duration: 0.6, stagger: 0.06 },
-            "+=0"
-          );
+          // Transition to next section (fade out items + slide screen + swap header)
+          if (i < 3) {
+            const nextHeader = headers[i + 1];
+            const currentHeader = headers[i];
 
-          // Link timeline to scroll
-          ScrollTrigger.create({
-            animation: tl,
-            trigger: startTrigger,
-            start: "top top",
-            endTrigger: endTrigger,
-            end: "top top",
-            scrub: 1,
-          });
+            const transition = gsap.timeline();
+
+            // Fade out floating items
+            transition.to(Array.from(items), {
+              opacity: 0,
+              duration: 0.6,
+              stagger: 0.06,
+            });
+
+            // Slide screen to next
+            transition.to(
+              screenTrack,
+              {
+                yPercent: -25 * (i + 1),
+                duration: 0.75,
+                ease: "power2.out",
+              },
+              "<0.1"
+            );
+
+            // Swap headers
+            if (currentHeader) {
+              transition.to(
+                currentHeader,
+                { autoAlpha: 0, duration: 0.3 },
+                "<"
+              );
+            }
+            if (nextHeader) {
+              transition.fromTo(
+                nextHeader,
+                { autoAlpha: 0 },
+                { autoAlpha: 1, duration: 0.3 },
+                "<0.15"
+              );
+            }
+
+            master.add(transition);
+          } else {
+            // Last section: hold a bit longer at the end
+            master.to({}, { duration: 0.4 });
+          }
         }
       }, el);
 
@@ -271,78 +269,79 @@ export const PhoneShowcase = () => {
     // ── Mobile animations (below 768px) ──
     mm.add("(max-width: 767px)", () => {
       const ctx = gsap.context(() => {
-        let currentStep = 0;
+        // Set initial header states
+        headers.forEach((h, i) => {
+          gsap.set(h, { autoAlpha: i === 0 ? 1 : 0 });
+        });
 
-        // Screen slide + header toggle
-        for (let i = 2; i <= 4; i++) {
-          const trigger = triggerMap.get(i);
-          if (!trigger) continue;
-
-          const prevHeader = el.querySelector<HTMLDivElement>(
-            `[data-phone-header="${i - 1}"]`
-          );
-          const nextHeader = el.querySelector<HTMLDivElement>(
-            `[data-phone-header="${i}"]`
-          );
-
-          ScrollTrigger.create({
-            trigger,
+        const master = gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
             start: "top top",
-            onEnter: () => {
-              currentStep = i - 1;
-              gsap.to(screenTrack, {
-                yPercent: -25 * currentStep,
-                duration: 0.75,
-                ease: "power2.out",
-              });
-              headers.forEach((h) => h.classList.remove("active"));
-              nextHeader?.classList.add("active");
-            },
-            onEnterBack: () => {
-              currentStep = i - 2;
-              gsap.to(screenTrack, {
-                yPercent: -25 * currentStep,
-                duration: 0.5,
-                ease: "power2.out",
-              });
-              headers.forEach((h) => h.classList.remove("active"));
-              prevHeader?.classList.add("active");
-            },
-          });
-        }
+            end: "+=800%",
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        });
 
-        // Mobile floating items — simple fade in/out scrub
-        for (let i = 1; i <= 4; i++) {
-          const startTrigger = triggerMap.get(i);
-          const endTrigger = triggerMap.get(i + 1);
-          if (!startTrigger || !endTrigger) continue;
-
+        for (let i = 0; i < 4; i++) {
+          const sectionIdx = i + 1;
           const items = el.querySelectorAll<HTMLElement>(
-            `[data-phone-mobile-item-wrap="${i}"] [data-phone-mobile-item]`
+            `[data-phone-mobile-item-wrap="${sectionIdx}"] [data-phone-mobile-item]`
           );
-          if (!items.length) continue;
 
           gsap.set(Array.from(items), { opacity: 0 });
 
-          const tl = gsap.timeline({
+          // Fade in
+          const fadeIn = gsap.timeline({
             defaults: { duration: 0.6, ease: "power3.out" },
           });
+          fadeIn.to(Array.from(items), { opacity: 1, stagger: 0.06 });
+          master.add(fadeIn);
 
-          // Fade in
-          tl.to(Array.from(items), { opacity: 1, stagger: 0.06 });
           // Hold
-          tl.to({}, { duration: 0.6 });
-          // Fade out
-          tl.to(Array.from(items), { opacity: 0, stagger: 0.06 });
+          master.to({}, { duration: 0.8 });
 
-          ScrollTrigger.create({
-            animation: tl,
-            trigger: startTrigger,
-            start: "top top",
-            endTrigger: endTrigger,
-            end: "top top",
-            scrub: 1,
-          });
+          // Transition
+          if (i < 3) {
+            const currentHeader = headers[i];
+            const nextHeader = headers[i + 1];
+
+            const transition = gsap.timeline();
+            transition.to(Array.from(items), {
+              opacity: 0,
+              stagger: 0.06,
+              duration: 0.5,
+            });
+            transition.to(
+              screenTrack,
+              {
+                yPercent: -25 * (i + 1),
+                duration: 0.7,
+                ease: "power2.out",
+              },
+              "<0.1"
+            );
+            if (currentHeader) {
+              transition.to(
+                currentHeader,
+                { autoAlpha: 0, duration: 0.3 },
+                "<"
+              );
+            }
+            if (nextHeader) {
+              transition.fromTo(
+                nextHeader,
+                { autoAlpha: 0 },
+                { autoAlpha: 1, duration: 0.3 },
+                "<0.15"
+              );
+            }
+            master.add(transition);
+          } else {
+            master.to({}, { duration: 0.4 });
+          }
         }
       }, el);
 
@@ -356,192 +355,159 @@ export const PhoneShowcase = () => {
     <section ref={sectionRef} className="relative w-full">
       <div className="px-6 md:px-10">
         <div className="mx-auto w-full max-w-7xl">
-          {/* Tall scroll track */}
-          <div className="relative" style={{ height: "830vh" }}>
-            {/* Sticky phone frame */}
-            <div className="sticky top-0 h-screen">
-              <div className="flex h-full flex-col gap-12 pt-22">
-                {/* ── Header text (stacked grid) ── */}
+          <div className="flex h-screen flex-col gap-12 pt-22">
+            {/* ── Header text (stacked grid) ── */}
+            <div
+              className="mx-auto grid max-w-2xl"
+              style={{ gridTemplate: "'stack' / 1fr" }}
+            >
+              {sections.map((s) => (
                 <div
-                  className="mx-auto grid max-w-2xl"
-                  style={{ gridTemplate: "'stack' / 1fr" }}
+                  key={s.id}
+                  data-phone-header={s.id}
+                  className="phone-header flex flex-col gap-5 text-center"
+                  style={{ gridArea: "stack" }}
                 >
-                  {sections.map((s) => (
-                    <div
-                      key={s.id}
-                      data-phone-header={s.id}
-                      className={`phone-header flex flex-col gap-5 text-center${s.id === 1 ? " active" : ""}`}
-                      style={{ gridArea: "stack" }}
-                    >
-                      <h2 className="font-heading text-3xl font-semibold leading-[1.1] tracking-tight text-black md:text-5xl">
-                        {s.title}
-                      </h2>
-                      <p className="mx-auto max-w-[52ch] text-lg font-medium text-text-sub md:text-xl">
-                        {s.description}
-                      </p>
-                    </div>
-                  ))}
+                  <h2 className="font-heading text-3xl font-semibold leading-[1.1] tracking-tight text-black md:text-5xl">
+                    {s.title}
+                  </h2>
+                  <p className="mx-auto max-w-[52ch] text-lg font-medium text-text-sub md:text-xl">
+                    {s.description}
+                  </p>
                 </div>
+              ))}
+            </div>
 
-                {/* ── Phone visual area ── */}
-                <div className="relative flex flex-1 items-center justify-center">
-                  {/* Phone mockup wrapper */}
+            {/* ── Phone visual area ── */}
+            <div className="relative flex flex-1 items-center justify-center">
+              {/* Phone mockup wrapper */}
+              <div
+                className="absolute left-1/2 top-0 z-20 -translate-x-1/2"
+                style={{
+                  aspectRatio: "1427 / 1642",
+                  height: "110%",
+                }}
+              >
+                {/* Hand + phone frame overlay */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${CDN}/68c0826fd3988ffc8592fcc1_93173bd40d2fe4c447493e87edc46b17_Group%2020685.avif`}
+                  alt="Hand holding phone"
+                  className="pointer-events-none relative z-10 block h-full w-full"
+                />
+
+                {/* Screen window */}
+                <div
+                  className="absolute z-5 overflow-hidden rounded-[5%] bg-white"
+                  style={{
+                    width: "39%",
+                    height: "75.8%",
+                    top: "1.40073%",
+                    left: "30.4%",
+                  }}
+                >
                   <div
-                    className="absolute left-1/2 top-0 z-20 -translate-x-1/2"
-                    style={{
-                      aspectRatio: "1427 / 1642",
-                      height: "110%",
-                    }}
+                    data-screen-track
+                    className="h-[400%]"
+                    style={{ transform: "translate(0px, 0px)" }}
                   >
-                    {/* Hand + phone frame overlay */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`${CDN}/68c0826fd3988ffc8592fcc1_93173bd40d2fe4c447493e87edc46b17_Group%2020685.avif`}
-                      alt="Hand holding phone"
-                      className="pointer-events-none relative z-10 block h-full w-full"
-                    />
-
-                    {/* Screen window */}
-                    <div
-                      className="absolute z-5 overflow-hidden rounded-[5%] bg-white"
-                      style={{
-                        width: "39%",
-                        height: "75.8%",
-                        top: "1.40073%",
-                        left: "30.4%",
-                      }}
-                    >
-                      <div
-                        data-screen-track
-                        className="h-[400%]"
-                        style={{ transform: "translate(0px, 0px)" }}
-                      >
-                        {sections.map((s) => (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            key={s.id}
-                            src={s.screen}
-                            alt={s.screenAlt}
-                            className="h-1/4 w-full object-cover"
-                          />
-                        ))}
-                      </div>
-
-                      {/* Bottom blur */}
-                      <div
-                        className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2 bg-white"
-                        style={{
-                          width: "150%",
-                          height: "5rem",
-                          filter: "blur(1rem)",
-                        }}
-                      />
-
-                      {/* Dynamic island */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {sections.map((s) => (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={`${CDN}/68bf20bfe5ada2afa3926ff3_dynamic%20island.avif`}
-                        alt=""
-                        className="absolute z-100"
-                        style={{
-                          width: "11.375%",
-                          top: "2.35%",
-                          left: "44.25%",
-                        }}
+                        key={s.id}
+                        src={s.screen}
+                        alt={s.screenAlt}
+                        className="h-1/4 w-full object-cover"
                       />
-                    </div>
-                  </div>
-
-                  {/* ── Floating UI items (desktop) ── */}
-                  <div className="absolute inset-0 z-1 hidden md:block">
-                    {sections.map((s) => (
-                      <div
-                        key={s.id}
-                        data-phone-items-wrap={s.id}
-                        className="absolute inset-0 flex flex-col items-center justify-center"
-                      >
-                        {s.items.map((item, i) => (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            key={i}
-                            data-phone-item={i + 1}
-                            src={item.src}
-                            alt={item.alt}
-                            loading="lazy"
-                            className={`absolute z-1 ${item.className}`}
-                          />
-                        ))}
-                      </div>
                     ))}
                   </div>
 
-                  {/* ── Floating UI items (mobile) ── */}
-                  <div className="absolute inset-0 z-1 md:hidden">
-                    {sections.map((s) => (
-                      <div
-                        key={s.id}
-                        data-phone-mobile-item-wrap={s.id}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        {s.mobileItems.map((item, i) => (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            key={i}
-                            data-phone-mobile-item={i + 1}
-                            src={item.src}
-                            alt={item.alt}
-                            loading="lazy"
-                            className={`absolute ${getMobilePosition(i)}`}
-                          />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Background radial graphic */}
+                  {/* Dynamic island */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`${CDN}/68bc1a457e73b0da2a032a3c_phone%20bg.svg`}
+                    src={`${CDN}/68bf20bfe5ada2afa3926ff3_dynamic%20island.avif`}
                     alt=""
-                    className="absolute -z-1 w-full min-w-260 max-w-none"
+                    className="absolute z-100"
                     style={{
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -37%)",
+                      width: "11.375%",
+                      top: "2.35%",
+                      left: "44.25%",
                     }}
                   />
                 </div>
               </div>
-            </div>
 
-            {/* ── Invisible scroll trigger points ── */}
-            <div
-              data-phone-trigger="1"
-              className="pointer-events-none absolute inset-x-0 h-px"
-              style={{ top: "30vh" }}
-            />
-            <div
-              data-phone-trigger="2"
-              className="pointer-events-none absolute inset-x-0 h-px"
-              style={{ top: "230vh" }}
-            />
-            <div
-              data-phone-trigger="3"
-              className="pointer-events-none absolute inset-x-0 h-px"
-              style={{ top: "430vh" }}
-            />
-            <div
-              data-phone-trigger="4"
-              className="pointer-events-none absolute inset-x-0 h-px"
-              style={{ top: "630vh" }}
-            />
-            <div
-              data-phone-trigger="5"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
-            />
+              {/* ── Floating UI items (desktop) ── */}
+              <div className="absolute inset-0 z-1 hidden md:block">
+                {sections.map((s) => (
+                  <div
+                    key={s.id}
+                    data-phone-items-wrap={s.id}
+                    className="absolute inset-0 flex flex-col items-center justify-center"
+                  >
+                    {s.items.map((item, i) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={i}
+                        data-phone-item={i + 1}
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        className={`absolute z-1 ${item.className}`}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              {/* ── Floating UI items (mobile) ── */}
+              <div className="absolute inset-0 z-1 md:hidden">
+                {sections.map((s) => (
+                  <div
+                    key={s.id}
+                    data-phone-mobile-item-wrap={s.id}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    {s.mobileItems.map((item, i) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={i}
+                        data-phone-mobile-item={i + 1}
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        className={`absolute ${getMobilePosition(i)}`}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              {/* Background radial graphic */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${CDN}/68bc1a457e73b0da2a032a3c_phone%20bg.svg`}
+                alt=""
+                className="absolute -z-1 w-full min-w-260 max-w-none"
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -37%)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
+      {/* Bottom blur */}
+      <div
+        className="absolute -bottom-14 left-1/2 z-40 -translate-x-1/2 translate-y-1/2 bg-white"
+        style={{
+          width: "150%",
+          height: "5rem",
+          filter: "blur(1rem)",
+        }}
+      />
     </section>
   );
 };
