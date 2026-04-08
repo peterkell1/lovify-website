@@ -31,7 +31,8 @@ export const StaggerButton = ({
 }: StaggerButtonProps) => (
   <a
     href={href}
-    className={`font-heading group inline-flex items-center gap-2.5 rounded-full border border-black/8 bg-white px-8 py-4 text-lg font-semibold text-text shadow-md transition-shadow hover:shadow-lg ${className}`}
+    className={`font-heading group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-lg font-semibold text-text transition-shadow ${className}`}
+    style={{ boxShadow: "0 0.25rem 1.5rem #00000026" }}
   >
     {icon}
     <span className="inline-flex">

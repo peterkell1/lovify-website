@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
 @theme inline {
@@ -16,10 +18,11 @@
   --color-cream: #FFF8F2;
   --color-dark: #1A1225;
   --color-card: #FFFFFF;
+  --color-black: #222326;
 
   /* Text */
   --color-text: #2D2040;
-  --color-text-sub: #6B5E7B;
+  --color-text-sub: #616265;
   --color-text-light: #9B8FAD;
 
   /* Borders */
@@ -31,10 +34,9 @@
   --color-foreground: #2D2040;
 
   /* Fonts */
-  --font-heading: var(--font-jakarta);
-  --font-body: var(--font-dm-sans);
-  --font-sans: var(--font-dm-sans);
-
+  --font-heading: var(--font-archivo);
+  --font-body: var(--font-archivo);
+  --font-sans: var(--font-archivo);
 }
 
 html.lenis, html.lenis body {
@@ -61,7 +63,7 @@ html, body {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: "Archivo", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

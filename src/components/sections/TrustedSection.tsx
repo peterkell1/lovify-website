@@ -68,13 +68,13 @@ const MosaicImage = ({
 );
 
 const TextBlock = ({ ref }: { ref?: React.Ref<HTMLDivElement> }) => (
-  <div ref={ref} className="px-5 text-center">
-    <h2 className="font-heading text-3xl font-extrabold tracking-tight text-text sm:text-4xl md:text-4xl md:leading-[1.2]">
+  <div ref={ref} className="text-center">
+    <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl md:leading-[1.2]">
       Crafted with Care.
       <br />
       Loved Everywhere.
     </h2>
-    <p className="mt-4 text-[15px] leading-relaxed text-text-sub">
+    <p className="mt-4 text-xl leading-normal text-text-sub font-medium">
       Don&apos;t take our words for it. See why Lovify is trusted and loved by
       people around the world who want to feel better, grow stronger, and live
       with purpose.
@@ -115,7 +115,7 @@ export const TrustedSection = () => {
   }, []);
 
   return (
-    <section className="w-full overflow-hidden bg-white px-4 py-24">
+    <section className="w-full overflow-hidden bg-white px-4 pt-24 pb-10">
       {/* Desktop */}
       <div className="hidden md:block" ref={containerRef}>
         <div className="relative pb-44 lg:pb-32">
@@ -124,7 +124,7 @@ export const TrustedSection = () => {
               <div
                 key={ci}
                 ref={(el) => { colRefs.current[ci] = el; }}
-                className={`flex flex-1 flex-col gap-2.5${ci === 0 || ci === 7 ? " hidden lg:flex" : ""}`}
+                className={`flex flex-1 flex-col gap-2.5 ${ci === 0 || ci === 7 ? " hidden lg:flex" : ""}`}
                 style={{ marginTop: col.mt }}
               >
                 {col.cards.map((card, ii) => (

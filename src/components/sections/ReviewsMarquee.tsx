@@ -64,21 +64,21 @@ const StarIcon = () => (
 );
 
 const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="w-full max-w-[384px] shrink-0 rounded-2xl bg-white p-7 shadow-[0_6px_24px_#00000014]">
+  <div className="w-full max-w-[384px] shrink-0 rounded-3xl bg-white p-7 shadow-[0_6px_24px_#00000014]">
     <div>
       <div className="flex gap-0.5">
         {Array.from({ length: review.stars }).map((_, i) => (
           <StarIcon key={i} />
         ))}
       </div>
-      <h3 className="mt-3 font-heading text-base font-bold text-text">
+      <h3 className="mt-2 font-heading text-lg font-bold text-text">
         {review.title}
       </h3>
-      <p className="mt-1 text-xs text-text-light">
+      <p className="mt-1 text-base font-medium text-text-light">
         {review.author}, {review.date}
       </p>
     </div>
-    <p className="mt-4 text-lg leading-relaxed" style={{ color: "#222326" }}>
+    <p className="mt-4 text-lg leading-normal font-medium" style={{ color: "#222326" }}>
       &ldquo;{review.quote}&rdquo;
     </p>
   </div>
@@ -118,7 +118,7 @@ export const ReviewsMarquee = () => {
   const items = [...reviews, ...reviews];
 
   return (
-    <section className="w-full overflow-hidden bg-white py-16">
+    <section className="w-full overflow-hidden bg-white pb-20 pt-4">
       <div ref={trackRef} className="flex w-max gap-5">
         {items.map((review, i) => (
           <ReviewCard key={i} review={review} />
