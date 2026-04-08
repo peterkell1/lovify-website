@@ -34,6 +34,7 @@
   --font-heading: var(--font-jakarta);
   --font-body: var(--font-dm-sans);
   --font-sans: var(--font-dm-sans);
+
 }
 
 html.lenis, html.lenis body {

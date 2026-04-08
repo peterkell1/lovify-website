@@ -5,6 +5,7 @@ import { ReadyShowcase } from "@/components/sections/ReadyShowcase";
 import { MusicShowcase } from "@/components/sections/MusicShowcase";
 import { DesignedFor } from "@/components/sections/DesignedFor";
 import { TrustedSection } from "@/components/sections/TrustedSection";
+import { ReviewsMarquee } from "@/components/sections/ReviewsMarquee";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
         <MusicShowcase />
         <DesignedFor />
         <TrustedSection />
+        <ReviewsMarquee />
       </main>
     </>
   );
