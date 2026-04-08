@@ -461,12 +461,12 @@ export const PhoneShowcase = () => {
               </div>
 
               {/* ── Floating UI items (mobile) ── */}
-              <div className="absolute inset-0 z-1 md:hidden">
+              <div className="absolute inset-0 z-30 md:hidden">
                 {sections.map((s) => (
                   <div
                     key={s.id}
                     data-phone-mobile-item-wrap={s.id}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="absolute inset-0"
                   >
                     {s.mobileItems.map((item, i) => (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -476,7 +476,7 @@ export const PhoneShowcase = () => {
                         src={item.src}
                         alt={item.alt}
                         loading="lazy"
-                        className={`absolute ${getMobilePosition(i)}`}
+                        className={`absolute max-w-30 ${getMobilePosition(i)}`}
                       />
                     ))}
                   </div>
@@ -514,10 +514,10 @@ export const PhoneShowcase = () => {
 
 function getMobilePosition(index: number): string {
   const positions = [
-    "top-[15%] left-[5%]",
-    "top-[10%] right-[5%]",
-    "bottom-[20%] right-[5%]",
-    "bottom-[15%] left-[5%]",
+    "top-[10%] left-[2%]",
+    "top-[5%] right-[2%]",
+    "bottom-[15%] right-[2%]",
+    "bottom-[10%] left-[2%]",
   ];
   return positions[index] || positions[0];
 }
