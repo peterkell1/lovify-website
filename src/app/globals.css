@@ -111,3 +111,13 @@ body {
   transform-origin: left;
   transform: scaleX(1) rotate(0.001deg);
 }
+
+/* Phone showcase header toggle */
+.phone-header {
+  opacity: 0;
+  transition: opacity 20ms ease;
+}
+
+.phone-header.active {
+  opacity: 1;
+}
