@@ -8,6 +8,7 @@ import { DesignedFor } from "@/components/sections/DesignedFor";
 import { TrustedSection } from "@/components/sections/TrustedSection";
 import { ReviewsMarquee } from "@/components/sections/ReviewsMarquee";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Footer } from "@/components/layout/footer/Footer";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
         <ReviewsMarquee />
         <ReadyBanner />
       </main>
+      <Footer />
     </>
   );
 };

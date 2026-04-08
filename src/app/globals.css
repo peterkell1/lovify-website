@@ -88,3 +88,24 @@ body {
 .music-swiper .swiper-pagination-bullet-active {
   background: #9ca3af;
 }
+
+/* Footer link underline hover */
+.footer_link {
+  position: relative;
+}
+.footer_link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.0625em;
+  background-color: #131313;
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform-origin: right;
+  transform: scaleX(0) rotate(0.001deg);
+}
+.footer_link:hover::before {
+  transform-origin: left;
+  transform: scaleX(1) rotate(0.001deg);
+}
