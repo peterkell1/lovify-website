@@ -145,9 +145,9 @@ export const ReadyShowcase = () => {
               </h3>
 
               {/* Description glass card */}
-              <div className="relative z-10 mt-auto max-w-lg rounded-3xl border-2 border-white/20 bg-white/20 px-5 py-4 backdrop-blur-xl sm:px-8 sm:py-6"
+              <div className="relative z-10 mt-auto max-w-lg rounded-2xl sm:rounded-3xl border-2 border-white/20 bg-white/20 px-4 py-3 backdrop-blur-xl sm:px-8 sm:py-6"
               style={{boxShadow: "inset 0 0 .25rem #ffffff4d"}}>
-                <p className="text-xl font-semibold leading-relaxed text-white">
+                <p className="text-sm sm:text-xl font-semibold leading-snug sm:leading-relaxed text-white">
                   {card.description}
                 </p>
               </div>
