@@ -379,7 +379,7 @@ export const PhoneShowcase = () => {
             </div>
 
             {/* ── Phone visual area ── */}
-            <div className="relative flex flex-1 items-center justify-center">
+            <div className="relative flex flex-1 items-center justify-center ">
               {/* Phone mockup wrapper */}
               <div
                 className="absolute left-1/2 top-0 z-20 -translate-x-1/2"

@@ -73,7 +73,7 @@ export const ReadyShowcase = () => {
   }, []);
 
   return (
-    <section className="w-full bg-white px-6 py-24">
+    <section className="w-full bg-white px-6 py-28">
       {/* Header */}
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div
@@ -138,7 +138,7 @@ export const ReadyShowcase = () => {
             <div className="p-16 relative z-10 h-full w-full ">
               {/* Title */}
               <h3
-                className="relative z-10 whitespace-pre-line font-heading text-3xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-8xl"
+                className="relative z-10 whitespace-pre-line font-heading text-3xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-8xl mb-4"
                 style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
               >
                 {card.title}
