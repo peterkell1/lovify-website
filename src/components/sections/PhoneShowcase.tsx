@@ -352,7 +352,7 @@ export const PhoneShowcase = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full">
+    <section ref={sectionRef} className="relative w-full overflow-hidden">
       <div className="px-6 md:px-10">
         <div className="mx-auto w-full max-w-7xl">
           <div className="flex h-screen flex-col gap-12 pt-22">

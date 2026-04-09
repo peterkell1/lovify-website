@@ -73,7 +73,7 @@ export const ReadyShowcase = () => {
   }, []);
 
   return (
-    <section className="w-full bg-white px-6 py-28">
+    <section className="relative z-10 w-full bg-white px-6 py-28">
       {/* Header */}
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <div
