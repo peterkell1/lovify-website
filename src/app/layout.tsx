@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
+import { site } from "@/content/site";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -9,9 +10,8 @@ const archivo = Archivo({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 export const metadata: Metadata = {
-  title: "Lovify — Transform Your Life Through Music",
-  description:
-    "The first app that uses personalized music and visualization to reprogram your subconscious mind and create the life you want.",
+  title: `${site.brand.name} — ${site.brand.tagline}`,
+  description: site.brand.description,
 };
 
 const RootLayout = ({

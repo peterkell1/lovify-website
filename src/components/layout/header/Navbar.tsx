@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { site } from "@/content/site";
 
-const NAV_LINKS = ["About us", "Blog", "Download App"] as const;
-const MOBILE_LINKS = ["About us", "Blog"] as const;
+const NAV_LINKS = site.nav.links;
+const MOBILE_LINKS = site.nav.mobileLinks;
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -36,8 +37,10 @@ export const Navbar = () => {
       style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)" }}
     >
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 mt-6">
-        <a href="#" className={`font-heading relative z-10 text-2xl font-extrabold tracking-tight transition-colors duration-300 ${textColor}`}>
-          Lovify
+        <a href="#" className={`font-heading relative z-10 flex items-center gap-2 text-2xl font-extrabold tracking-tight transition-colors duration-300 ${textColor}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={site.brand.logo} alt="" className="size-8 shrink-0" />
+          <span>{site.brand.name}</span>
         </a>
 
         {/* Desktop — glassmorphic pill (md+) */}

@@ -1,40 +1,16 @@
-const cards = [
-  {
-    label: "Music",
-    title: "Tune into\nyour emotions",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80",
-  },
-  {
-    label: "Visualization",
-    title: "See your goals\ncome to life",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80",
-  },
-  {
-    label: "Affirmations",
-    title: "Reprogram your\ninner dialogue",
-    image:
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80",
-  },
-  {
-    label: "Manifestation",
-    title: "Track and build\npowerful habits",
-    image:
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1200&q=80",
-  },
-];
+import { site } from "@/content/site";
+
+const { heading, description, cards } = site.designedFor;
 
 export const DesignedFor = () => (
   <section className="w-full bg-white px-6 py-24">
     {/* Header */}
     <div className="mx-auto max-w-2xl text-center">
       <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
-        Designed for Daily Life
+        {heading}
       </h2>
       <p className="mt-4 text-xl leading-relaxed text-text-sub font-medium">
-        From music and mindset to habits and manifestation, Lovify helps you
-        stay in sync with yourself and build routines that support your growth.
+        {description}
       </p>
     </div>
 
@@ -57,12 +33,12 @@ export const DesignedFor = () => (
           <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-transparent" />
 
           {/* Text content */}
-          <div className="relative z-10 flex flex-col items-center pt-10 text-center sm:pt-14">
-            <span className="text-2xl font-semibold tracking-wide text-[#fff9]">
+          <div className="relative z-10 flex flex-col items-center pt-5 text-center sm:pt-7">
+            <span className="text-base font-semibold tracking-wide text-[#fff9] sm:text-lg">
               {card.label}
             </span>
             <h3
-              className="mt-2 whitespace-pre-line font-heading text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-[2.5rem]"
+              className="mt-1 whitespace-pre-line font-heading text-lg font-extrabold leading-tight text-white sm:text-xl md:text-2xl"
               style={{ textShadow: "0 .25rem .5rem #00000026" }}
             >
               {card.title}

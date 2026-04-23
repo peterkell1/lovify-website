@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { site } from "@/content/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,12 +12,12 @@ const CDN = "https://cdn.prod.website-files.com/64dcc8c57b43bbf105fd381f";
 const sections = [
   {
     id: 1,
-    title: "Smarter Recovery",
+    title: site.phoneShowcase[0]?.title ?? "Smarter Recovery",
     description:
+      site.phoneShowcase[0]?.description ??
       "Know when to push, when to pause, and when you're ready to perform, backed by real-time metrics and biomarkers.",
-    screen: "/assets/phone-case/mock-1.png",
-    screenAlt:
-      "Recovery overview showing 73% recovery, resting heart rate of 49.1 bpm, and HRV of 65.1 ms.",
+    screen: site.phoneShowcase[0]?.screen ?? "/assets/brand/1.png",
+    screenAlt: site.phoneShowcase[0]?.title ?? "",
     items: [
       { src: "/assets/phone-case/mock-1-1.png", alt: "Leaf icon", className: "top-[10%] left-[19%] -rotate-[10deg] w-12 drop-shadow-lg" },
       { src: "/assets/phone-case/mock-1-2.png", alt: "Feel More Joy card", className: "top-[30%] left-[8%] -rotate-[4deg] max-w-[14.5rem] drop-shadow-xl rounded-2xl" },
@@ -34,12 +35,12 @@ const sections = [
   },
   {
     id: 2,
-    title: "Fuel That Moves You Forward",
+    title: site.phoneShowcase[1]?.title ?? "Fuel That Moves You Forward",
     description:
+      site.phoneShowcase[1]?.description ??
       "Track what you eat and get actionable feedback that helps you build a better relationship with food.",
-    screen: "/assets/phone-case/mock-2.png",
-    screenAlt:
-      "Nutrition app showing a score of 93, with food quality, glucose impact, and macro goals.",
+    screen: site.phoneShowcase[1]?.screen ?? "/assets/brand/2.png",
+    screenAlt: site.phoneShowcase[1]?.title ?? "",
     items: [
       { src: "/assets/phone-case/mock-2-6.png", alt: "Music note icon", className: "top-[10%] left-[19%] -rotate-[10deg] w-12 drop-shadow-lg" },
       { src: "/assets/phone-case/mock-2-1.png", alt: "Create a similar vision", className: "top-[30%] left-[8%] -rotate-[4deg] max-w-[14.5rem] drop-shadow-xl rounded-2xl" },
@@ -57,12 +58,12 @@ const sections = [
   },
   {
     id: 3,
-    title: "Dial In Your Sleep",
+    title: site.phoneShowcase[2]?.title ?? "Dial In Your Sleep",
     description:
+      site.phoneShowcase[2]?.description ??
       "Improve your sleep by understanding patterns, identifying disruptions, and building habits that support deeper rest.",
-    screen: "/assets/phone-case/mock-3.png",
-    screenAlt:
-      "Sleep summary showing 75% sleep quality, 8h 2m in bed, and 7h 52m asleep.",
+    screen: site.phoneShowcase[2]?.screen ?? "/assets/brand/3.png",
+    screenAlt: site.phoneShowcase[2]?.title ?? "",
     items: [
       { src: "/assets/phone-case/mock-3-1.png", alt: "Heart icon", className: "top-[10%] left-[19%] -rotate-[10deg] w-12 drop-shadow-lg" },
       { src: "/assets/phone-case/mock-3-2.png", alt: "Lyrics preview", className: "top-[30%] left-[8%] -rotate-[4deg] max-w-[14.5rem] drop-shadow-xl rounded-2xl" },
@@ -80,12 +81,12 @@ const sections = [
   },
   {
     id: 4,
-    title: "Push With Purpose",
+    title: site.phoneShowcase[3]?.title ?? "Push With Purpose",
     description:
+      site.phoneShowcase[3]?.description ??
       "Understand how much strain you're under, how it affects your body, and how to adjust for progress without burnout.",
-    screen: "/assets/phone-case/mock-4.png",
-    screenAlt:
-      "Fitness stats showing 65% strain, 55 min duration, and 654 kCal energy.",
+    screen: site.phoneShowcase[3]?.screen ?? "/assets/brand/4.png",
+    screenAlt: site.phoneShowcase[3]?.title ?? "",
     items: [
       { src: "/assets/phone-case/mock-4-1.png", alt: "Heart headphones icon", className: "top-[10%] left-[19%] -rotate-[10deg] w-12 drop-shadow-lg" },
       { src: "/assets/phone-case/mock-4-3.png", alt: "Gift form card", className: "top-[30%] left-[8%] -rotate-[4deg] max-w-[14.5rem] drop-shadow-xl rounded-2xl" },

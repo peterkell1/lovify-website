@@ -2,57 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { site } from "@/content/site";
 
-const reviews = [
-  {
-    stars: 5,
-    title: "This is the Health app you are looking for",
-    author: "the real wayne",
-    date: "Aug 12, 2025",
-    quote:
-      "Truly wellness at mind is what this app is for. Metrics to back it up. Are you recovered? Recovery over time? Stress over time. It\u2019s got it all. The best health and wellness app that Apple should\u2019ve had built right into the Apple Watch all along.",
-  },
-  {
-    stars: 5,
-    title: "Fantastic App",
-    author: "CFHW",
-    date: "Aug 12, 2025",
-    quote:
-      "This app does exactly what it needs to do. If you wear the Apple Watch, the data is not processed, shown in an appropriate way in Apple health and is basically useless. With this app you can get a fantastic overview of sleep, recovery and strain.",
-  },
-  {
-    stars: 5,
-    title: "Never leaving",
-    author: "Isaac_andy97",
-    date: "Sep 09, 2025",
-    quote:
-      "24 hours into using Lovify! Absolutely incredible. It is beautifully designed, easy to use, easy to understand. Such a new app too so I\u2019m so excited to see how it grows!",
-  },
-  {
-    stars: 5,
-    title: "Great and Useful App",
-    author: "Chinatiger0000",
-    date: "Sep 01, 2025",
-    quote:
-      "This app is incredibly useful for tracking my sleep and workouts! I think that the numbers are incredibly accurate compared to other apps and it really helps me plan my day.",
-  },
-  {
-    stars: 5,
-    title: "Amazing slick app with a great roadmap",
-    author: "Ghosal",
-    date: "Aug 31, 2025",
-    quote:
-      "This app is superb. It\u2019s not long been released but is very polished. Great interface and the developer has a great roadmap that aspires to be the best of its kind.",
-  },
-  {
-    stars: 5,
-    title: "Life changing experience",
-    author: "MindfulMike",
-    date: "Oct 15, 2025",
-    quote:
-      "Lovify has completely transformed my daily routine. The music and visualization features are unlike anything I\u2019ve tried. I feel more focused and at peace every single day.",
-  },
-];
+const reviews = site.reviews;
 
 const StarIcon = () => (
   <svg width="20" height="20" viewBox="0 0 25 25" fill="none">

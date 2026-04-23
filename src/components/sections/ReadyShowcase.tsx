@@ -3,39 +3,11 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { site } from "@/content/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const cards = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80",
-    title: "Feel the\nRhythm",
-    description:
-      "Music fuels your mood and sharpens focus. Lovify curates playlists that match your energy, helping you stay in the zone whether you're working out or winding down.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80",
-    title: "Visualize\nYour Best Self",
-    description:
-      "Guided visualization rewires your mindset for success. Spend just 5 minutes a day picturing your goals and watch your confidence and clarity grow over time.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80",
-    title: "Reprogram\nYour Mind",
-    description:
-      "Replace limiting beliefs with empowering ones. Lovify's affirmation engine adapts to your goals, reinforcing positive thought patterns day after day.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1200&q=80",
-    title: "Manifest\nYour Life",
-    description:
-      "Turn intentions into reality. Track your manifestations, set clear intentions, and let Lovify remind you of the bigger picture when life gets busy.",
-  },
-];
+const { badge, heading, description, cards } = site.readyShowcase;
 
 export const ReadyShowcase = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,51 +79,32 @@ export const ReadyShowcase = () => {
               </clipPath>
             </defs>
           </svg>
-          <span className="text-lg font-medium text-black">Preview</span>
+          <span className="text-lg font-medium text-black">{badge}</span>
         </div>
 
         <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-[2.5rem] md:text-[32px]">
-          Ready When You Are
+          {heading}
         </h2>
 
         <p className="mt-4 max-w-xl text-xl leading-relaxed font-medium text-text-sub">
-          Start with one step. One log at a time. Lovify meets you where you are
-          and helps you move forward with clarity and confidence.
+          {description}
         </p>
       </div>
 
       {/* Cards */}
       <div ref={containerRef} className="mx-auto mt-16 flex max-w-[76rem] flex-col gap-8">
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           <div
-            key={card.title}
+            key={i}
             data-card
-            className="relative flex h-[55vh] w-full flex-col justify-between overflow-hidden rounded-[2.5rem] min-[773px]:h-[85vh] min-[773px]:max-h-170"
+            className="relative flex aspect-[2048/1632] w-full flex-col justify-between overflow-hidden rounded-[2.5rem] min-[773px]:aspect-auto min-[773px]:h-[85vh] min-[773px]:max-h-170"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={card.image}
-              alt={card.title}
-              className="absolute inset-0 h-full w-full object-cover"
+              alt=""
+              className="absolute inset-0 h-full w-full rounded-[2.5rem] object-contain object-center"
             />
-
-            <div className="p-16 relative z-10 h-full w-full ">
-              {/* Title */}
-              <h3
-                className="relative z-10 whitespace-pre-line font-heading text-3xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-8xl mb-4"
-                style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
-              >
-                {card.title}
-              </h3>
-
-              {/* Description glass card */}
-              <div className="relative z-10 mt-auto max-w-lg rounded-2xl sm:rounded-3xl border-2 border-white/20 bg-white/20 px-4 py-3 backdrop-blur-xl sm:px-8 sm:py-6"
-              style={{boxShadow: "inset 0 0 .25rem #ffffff4d"}}>
-                <p className="text-sm sm:text-xl font-semibold leading-snug sm:leading-relaxed text-white">
-                  {card.description}
-                </p>
-              </div>
-            </div>
           </div>
         ))}
       </div>

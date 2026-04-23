@@ -7,43 +7,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const slides = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80",
-    title: "Music That Moves You",
-    description:
-      "Go beyond playlists. Lovify matches music to your mood and goals, so every track fuels your focus, energy, or calm exactly when you need it.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80",
-    title: "See It Before You Live It",
-    description:
-      "Guided visualizations help you picture your ideal life with vivid clarity. Train your mind daily and watch your actions start to follow.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80",
-    title: "Speak Your Truth",
-    description:
-      "Personalized affirmations that evolve with you. Lovify builds a daily practice that rewires your inner dialogue and strengthens self-belief.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=1200&q=80",
-    title: "Set Intentions That Stick",
-    description:
-      "Manifestation works when you stay consistent. Log your intentions, track your progress, and let Lovify keep you aligned with what matters most.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80",
-    title: "Your Daily Reset",
-    description:
-      "Wind down with curated soundscapes and breathing exercises. Lovify helps you close each day with peace so you wake up ready for the next.",
-  },
-];
+import { site } from "@/content/site";
+
+const { heading, slides } = site.musicShowcase;
 
 export const MusicShowcase = () => {
   return (
@@ -51,7 +17,7 @@ export const MusicShowcase = () => {
       {/* Header */}
       <div className="mx-auto flex max-w-2xl flex-col items-center px-6 text-center">
         <h2 className="font-heading text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
-          Everything You Need to Grow
+          {heading}
         </h2>
       </div>
 
