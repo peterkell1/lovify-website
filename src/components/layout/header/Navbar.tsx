@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/content/site";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+  const onHomePage = pathname === "/";
   const [hidden, setHidden] = useState(false);
   const [pastHero, setPastHero] = useState(false);
 
@@ -22,11 +25,17 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const textColor = pastHero ? "text-text" : "text-white";
-  const linkColor = pastHero ? "text-text/80 hover:text-text" : "text-white/90 hover:text-white";
-  const downloadBg = pastHero
-    ? "bg-text text-white hover:bg-text/90"
-    : "bg-white/20 text-white backdrop-blur-md border border-white/30 hover:bg-white/30";
+  // Only home page has a dark hero background. Everywhere else the bg is cream
+  // from the top, so the nav needs dark text always.
+  const onDarkBg = onHomePage && !pastHero;
+
+  const textColor = onDarkBg ? "text-white" : "text-text";
+  const linkColor = onDarkBg
+    ? "text-white/90 hover:text-white"
+    : "text-text/80 hover:text-text";
+  const downloadBg = onDarkBg
+    ? "bg-white/20 text-white backdrop-blur-md border border-white/30 hover:bg-white/30"
+    : "bg-text text-white hover:bg-text/90";
 
   return (
     <header

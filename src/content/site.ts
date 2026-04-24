@@ -302,7 +302,6 @@ export const site = {
         title: "Company",
         links: [
           { label: "About us", href: "/about" },
-          { label: "Careers", href: "/careers" },
           { label: "Blog", href: "/blog" },
         ],
       },
@@ -310,17 +309,11 @@ export const site = {
         title: "Product",
         links: [
           { label: "Download App", href: "/download" },
-          { label: "Getting started", href: "/getting-started" },
-          { label: "Release notes", href: "/release-notes" },
-          { label: "Roadmap", href: "/roadmap" },
-          { label: "Beta", href: "/beta" },
         ],
       },
       {
         title: "Resources",
         links: [
-          { label: "FAQ", href: "/faq" },
-          { label: "Request a feature", href: "/request-feature" },
           { label: "Report a bug", href: "/report-bug" },
           { label: "Contact us", href: "/contact" },
         ],
