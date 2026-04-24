@@ -40,6 +40,46 @@ order the page renders:
 
 `site.cta` controls the "Download App" button text + link everywhere.
 
+### Sub-pages (About, FAQ, Careers, Contact, Terms, Privacy, etc.)
+
+Every footer link has its own route under `src/app/<slug>/page.tsx`. All of
+them read their copy from `site.pages.<slug>` in [`site.ts`](src/content/site.ts).
+To edit any page's copy, open `site.ts` and change the strings inside
+`pages.<slug>` — no need to touch the React file.
+
+Shape:
+
+```ts
+pages: {
+  about:    { eyebrow, title, subtitle, story[], founders[] },
+  careers:  { eyebrow, title, subtitle, openings[], emailCta },
+  faq:      { eyebrow, title, subtitle, items: [{ q, a }] },
+  contact:  { eyebrow, title, subtitle },
+  terms:    { eyebrow, title, subtitle, body: [{ heading, text }], placeholder },
+  privacy:  { eyebrow, title, subtitle, body: [{ heading, text }], placeholder },
+  comingSoon: { eyebrow, title, subtitle }, // default for placeholder pages
+}
+```
+
+Contact email + Canny URL are also centralized:
+
+- `site.contact.email` — used by `/contact`, `/report-bug`, `/careers`
+- `site.canny.url` — used by `/feedback`, `/request-feature`, `/roadmap`
+
+### Report-a-bug link
+
+`/report-bug` is a server redirect to
+`mailto:${site.contact.email}?subject=Lovify bug report`. Clicking the
+footer link opens the user's email app. To change the address, edit
+`site.contact.email`.
+
+### Placeholder "Coming soon" pages
+
+`/blog`, `/release-notes`, `/getting-started`, `/beta`, `/download` are
+placeholder pages while we set up the blog CMS. They all use the shared
+`ComingSoon` component — each route passes in its own eyebrow/title/subtitle.
+When the blog is ready, replace `src/app/blog/page.tsx` with real content.
+
 ### Brand colors
 
 Edit [`src/app/globals.css`](src/app/globals.css). Look for the

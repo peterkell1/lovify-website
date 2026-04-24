@@ -15,7 +15,7 @@ const StarIcon = () => (
   </svg>
 );
 
-const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
+const ReviewCard = ({ review }: { review: (typeof reviews)[number] }) => (
   <div className="w-full max-w-[384px] shrink-0 rounded-3xl bg-white p-7 shadow-[0_6px_24px_#00000014]">
     <div>
       <div className="flex gap-0.5">

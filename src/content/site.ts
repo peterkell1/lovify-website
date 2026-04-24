@@ -268,7 +268,7 @@ export const site = {
       title: "Get Clear",
       description:
         "Tell Lovify what you're going through or who you want to become. It helps you shape the idea and imagine the best version of your life.",
-      screen: "/assets/brand/2.png",
+      screen: "/assets/brand/visualize.png",
     },
     {
       title: "Make It A Song",
@@ -280,13 +280,13 @@ export const site = {
       title: "See Your Dream",
       description:
         "Lovify creates a custom vision of your dream life — and with one selfie, places you right inside it. Watch it come alive as a mind movie you can play anytime.",
-      screen: "/assets/brand/4.png",
+      screen: "/assets/brand/dreams.png",
     },
     {
       title: "Feel It Daily",
       description:
         "Build a library of songs and visions you can press play on anywhere. In the car. On your walk. First thing in the morning. Wherever life happens.",
-      screen: "/assets/brand/1.png",
+      screen: "/assets/brand/player.png",
     },
   ],
 
@@ -336,6 +336,181 @@ export const site = {
       reddit: "https://reddit.com",
       youtube: "https://youtube.com",
       facebook: "https://facebook.com",
+    },
+  },
+
+  /* --------------------------------------------------------------------- */
+  /*  CONTACT — reused by /contact, /report-bug, footer email links         */
+  /* --------------------------------------------------------------------- */
+  contact: {
+    email: "support@trylovify.com",
+  },
+
+  /* --------------------------------------------------------------------- */
+  /*  CANNY — board URL for /feedback, /request-feature, /roadmap          */
+  /* --------------------------------------------------------------------- */
+  canny: {
+    url: "https://lovify.canny.io",
+  },
+
+  /* --------------------------------------------------------------------- */
+  /*  SUB-PAGES — every footer route reads its copy from here               */
+  /* --------------------------------------------------------------------- */
+  pages: {
+    about: {
+      eyebrow: "About us",
+      title: "Music is how we become ourselves",
+      subtitle:
+        "Lovify turns the life you dream about into songs you can feel and visions you can see — so the future isn't something you wait for, it's something you listen to.",
+      story: [
+        "Every one of us has a version of ourselves we can almost see — the one who wakes up early, speaks with confidence, moves through the world with ease. Lovify was built to shorten the distance between that version and the one you're living today.",
+        "We believe music is the fastest path to change. A song you love bypasses the thinking mind and lands straight in the feeling one. That's why we built an app that writes songs about your life — the life you want, the one you're becoming — and lets you press play on it, every day, wherever you are.",
+        "Paired with AI-generated visions of your dream life, Lovify makes the future feel close enough to touch. That's not manifestation theory. That's how your brain learns.",
+      ],
+      founders: [
+        {
+          name: "Peter Kell",
+          role: "Founder & CEO",
+          bio: "Builder. Believer. Currently becoming.",
+        },
+      ],
+    },
+
+    careers: {
+      eyebrow: "Careers",
+      title: "Help us build the soundtrack to someone's best life",
+      subtitle:
+        "We're a small team working on a big idea. If you want to build tools that make people feel better about their own future, we'd love to hear from you.",
+      openings: [] as { role: string; location: string; href: string }[],
+      emailCta:
+        "We're not actively hiring yet — but we're always open to meeting extraordinary people. Send us a note and tell us what you want to build.",
+    },
+
+    faq: {
+      eyebrow: "FAQ",
+      title: "Questions, answered",
+      subtitle:
+        "Everything you need to know about how Lovify works, what's safe, what's paid, and what's coming.",
+      items: [
+        {
+          q: "What is Lovify?",
+          a: "Lovify is an app that writes personalized songs about the life you want to live — paired with AI-generated visions and mind movies of your future self. Think of it as a soundtrack and vision board for the version of you that's already on the way.",
+        },
+        {
+          q: "How does it work?",
+          a: "Tell Lovify what you're going through or who you want to become. It shapes the idea, writes lyrics just for you, and lets you pick the sound. Then it creates a vision of your dream life — and with one selfie, places you right inside it.",
+        },
+        {
+          q: "Is the music explicit or negative?",
+          a: "Never. Every Lovify song is written to raise your state, not lower it. No profanity. No dark energy. Just songs that sound like hope.",
+        },
+        {
+          q: "Can I share or gift a song?",
+          a: "Yes. Gift A Song lets you write a personal song for someone you love — a birthday, a wedding, a healing moment. A gift they'll never forget.",
+        },
+        {
+          q: "How much does Lovify cost?",
+          a: "Lovify offers a free tier with a limited number of songs and visions. Paid plans unlock unlimited creation, higher-quality audio, and priority processing. Pricing details are available inside the app.",
+        },
+        {
+          q: "What devices is Lovify on?",
+          a: "Lovify is available on iPhone. Android and web versions are on the roadmap — follow our feedback board to weigh in on what comes next.",
+        },
+        {
+          q: "Is my data private?",
+          a: "Yes. Your visions, your songs, and your selfies stay yours. We don't sell user data. Full details live in our Privacy Policy.",
+        },
+        {
+          q: "Who's behind Lovify?",
+          a: "Lovify is built by a small independent team that believes the future you're imagining deserves a soundtrack. Learn more on our About page.",
+        },
+      ],
+    },
+
+    contact: {
+      eyebrow: "Contact",
+      title: "Say hi",
+      subtitle:
+        "Questions, press, partnerships, or just want to tell us how Lovify is landing for you — we read every email.",
+    },
+
+    terms: {
+      eyebrow: "Legal",
+      title: "Terms of Service",
+      subtitle: "Last updated April 23, 2026",
+      body: [
+        {
+          heading: "1. Agreement",
+          text: "By accessing or using Lovify, you agree to be bound by these Terms of Service and all applicable laws. If you do not agree, please do not use Lovify.",
+        },
+        {
+          heading: "2. Your account",
+          text: "You're responsible for keeping your account credentials secure and for all activity that happens under your account. Notify us immediately at support@trylovify.com if you suspect unauthorized access.",
+        },
+        {
+          heading: "3. Content you create",
+          text: "Songs, visions, and mind movies you generate in Lovify are yours to keep and share for personal, non-commercial use. We ask that you don't resell Lovify-generated content without our written permission.",
+        },
+        {
+          heading: "4. Acceptable use",
+          text: "Don't use Lovify to generate content that is illegal, harassing, sexually explicit, or intended to impersonate real people without consent. We reserve the right to suspend accounts that violate these principles.",
+        },
+        {
+          heading: "5. Subscriptions & billing",
+          text: "Paid plans renew automatically on their billing cycle. You can cancel anytime inside the app. Refunds are handled case-by-case — reach out and we'll do our best to make it right.",
+        },
+        {
+          heading: "6. Changes",
+          text: "We may update these terms from time to time. Material changes will be announced in the app or by email. Continuing to use Lovify after a change means you accept the revised terms.",
+        },
+        {
+          heading: "7. Contact",
+          text: "Questions about these terms? Email us at support@trylovify.com.",
+        },
+      ],
+      placeholder:
+        "This is a placeholder version of our Terms of Service while we finalize the legal copy with counsel. Nothing on this page constitutes legal advice.",
+    },
+
+    privacy: {
+      eyebrow: "Legal",
+      title: "Privacy Policy",
+      subtitle: "Last updated April 23, 2026",
+      body: [
+        {
+          heading: "What we collect",
+          text: "We collect the information you give us when you create an account (name, email), the content you generate in Lovify (prompts, songs, visions, selfies), and basic usage analytics to help us improve the app.",
+        },
+        {
+          heading: "How we use it",
+          text: "We use your information to generate your personalized songs and visions, deliver the product, communicate with you, and improve Lovify. We don't sell your data. Ever.",
+        },
+        {
+          heading: "Who we share it with",
+          text: "We share limited data with trusted infrastructure providers (hosting, email, analytics) who help us run Lovify, under confidentiality agreements. We'll never sell your content or use it to train third-party models without your consent.",
+        },
+        {
+          heading: "Your choices",
+          text: "You can export or delete your Lovify data at any time from the app, or by emailing support@trylovify.com. Account deletion removes all associated content within 30 days.",
+        },
+        {
+          heading: "Cookies",
+          text: "We use essential cookies to keep you signed in and basic analytics cookies to understand how Lovify is used. We don't use tracking cookies for advertising.",
+        },
+        {
+          heading: "Contact",
+          text: "Questions about your privacy? Email privacy@trylovify.com.",
+        },
+      ],
+      placeholder:
+        "This is a placeholder version of our Privacy Policy while we finalize the legal copy with counsel. Nothing on this page constitutes legal advice.",
+    },
+
+    comingSoon: {
+      eyebrow: "Coming soon",
+      title: "Something good is on the way",
+      subtitle:
+        "This page doesn't exist yet, but it will. In the meantime, press play on the life you love.",
     },
   },
 } as const;

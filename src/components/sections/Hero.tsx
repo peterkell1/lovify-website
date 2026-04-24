@@ -44,7 +44,7 @@ export const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen w-full flex-col items-center justify-start overflow-hidden px-6 pt-28 pb-24 md:pt-40 md:pb-0"
+      className="relative flex min-h-screen w-full flex-col items-center justify-start overflow-hidden px-6 pt-[22vh] pb-24 md:pt-[30vh] md:pb-0"
     >
       <Image src={site.hero.backgroundImage} alt="" fill priority className="object-cover object-[center_65%]" />
 
