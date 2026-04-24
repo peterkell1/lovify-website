@@ -355,21 +355,92 @@ export const site = {
   pages: {
     about: {
       eyebrow: "About us",
-      title: "Music is how we become ourselves",
-      subtitle:
-        "Lovify turns the life you dream about into songs you can feel and visions you can see — so the future isn't something you wait for, it's something you listen to.",
-      story: [
-        "Every one of us has a version of ourselves we can almost see — the one who wakes up early, speaks with confidence, moves through the world with ease. Lovify was built to shorten the distance between that version and the one you're living today.",
-        "We believe music is the fastest path to change. A song you love bypasses the thinking mind and lands straight in the feeling one. That's why we built an app that writes songs about your life — the life you want, the one you're becoming — and lets you press play on it, every day, wherever you are.",
-        "Paired with AI-generated visions of your dream life, Lovify makes the future feel close enough to touch. That's not manifestation theory. That's how your brain learns.",
+      title: "You Are Not Broken. Your Program Is.",
+      subtitle: "Hi, I'm Kaitlin.",
+      intro: [
+        "If you found your way here, there's a good chance you've tried a lot of things already. Maybe therapy. Maybe meditation. Maybe journaling, affirmations, vision boards, cold plunges, retreats, podcasts, supplements. Maybe all of it.",
+        "And somewhere inside, you're still quietly asking — why isn't any of this working?",
+        "I asked the same question for nine years.",
       ],
-      founders: [
+      sections: [
         {
-          name: "Peter Kell",
-          role: "Founder & CEO",
-          bio: "Builder. Believer. Currently becoming.",
+          heading: "How I Got Here",
+          body: [
+            "I was 26 years old, working at MTV in Times Square, prepping for the VMAs — the career I'd dreamed about my whole life. And then my mom called. My brother Sean — my best friend, 18 months older than me — had tried to take his own life.",
+            "I flew home that night. I walked into his hospital room, fell to my knees at his bedside, and begged God: \"Just give me what he has. Let him live. I'll take it.\"",
+            "Sean woke up ten days later. He was okay.",
+            "A month later, I started getting sick. First my stomach. Then lupus. Then Lyme disease. Then, eventually, scleroderma — an autoimmune disease hardening my organs from the inside out.",
+            "A specialist looked at my scans and told me, \"You have five years. Best case.\"",
+            "I spent those years doing everything the modern world tells you to do. Eight medications. IV treatments. Saunas. Ice baths. Specialists in three countries. And every single day, I'd introduce myself with the same four words: \"I am sick.\"",
+            "What I didn't understand then is that I was running a program. A program I installed myself, at my brother's bedside, when I told God I'd trade my life for his. My brain took that command and ran it for nine years.",
+            "And no medication in the world was going to reach it, because it wasn't in my body. It was in my mind.",
+          ],
+        },
+        {
+          heading: "The Morning That Changed Everything",
+          body: [
+            "After my body, my career, my relationship, and my home all collapsed at once, I found myself at my brother's house with a suitcase and nothing else. And one morning — I just decided I was done.",
+            "Not done wanting to change. Actually, truly done with the old version of me.",
+            "So I started doing something small. Every morning, I'd put on the happiest music I could find, put my headphones on, and dance around my parents' living room in my pajamas. And while the music played, I'd close my eyes and build a picture so vivid I could feel the warmth of it — me living by the beach in California, healthy, traveling the world telling people they could heal.",
+            "I didn't hope for it. I FELT it.",
+            "Ten months later, my pituitary tumor was gone. My scleroderma was gone. Every single autoimmune marker I'd been fighting for nine years — gone.",
+            "My doctor looked at me and said, \"What did you do?\"",
+            "And all I could think was: I just fell in love with my life.",
+          ],
+        },
+        {
+          heading: "What I Understand Now",
+          body: [
+            "After I healed, I became obsessed with understanding WHY it worked. And what I learned changed how I see everything.",
+            "Your brain is designed to keep you safe. And safe means familiar.",
+            "This is the most important sentence on this page. Read it twice.",
+            "Your brain isn't trying to make your dreams come true. It's trying to keep you in whatever reality feels most familiar — even if that reality is making you miserable. That's why willpower isn't enough. That's why affirmations feel fake. That's why you can journal for a year and still wake up in the same loop.",
+            "You are not broken. Your brain is just running a program that was installed by everything you've ever experienced, everyone who ever told you who you are, and every thought you've repeated back to yourself.",
+            "And until you give your brain a NEW program — one that feels real, not wished for — it will pull you back to the familiar every single time.",
+          ],
+        },
+        {
+          heading: "Why Music. Why Vision. Why Both.",
+          body: [
+            "When I started researching what actually worked, two things kept showing up:",
+            "Music is the fastest way into the subconscious mind. It bypasses the conscious filter. It changes your emotional state in under 90 seconds. It's why a song from ten years ago can transport you back to who you were when you first heard it. Your subconscious doesn't listen to music the way your ears do — it RECORDS it.",
+            "Vision is how your brain rehearses reality. Your brain cannot tell the difference between a vividly imagined experience and a real one. Olympic athletes, surgeons, elite performers — they've all known this for decades. When you see yourself living your dream life over and over, your brain starts treating that version of you as the familiar one.",
+            "Put those two together — music that feels like your dream life, and visuals of you living it — and you don't need to convince your brain anymore. You just need to keep pressing play.",
+            "That's not woo-woo. That's how the brain works.",
+          ],
+        },
+        {
+          heading: "Why We Built Lovify",
+          body: [
+            "After I healed, my life opened up in ways I never imagined. I went from Sports Illustrated to hosting for Mindvalley, standing on stages in front of thousands of people, interviewing the biggest names in personal development.",
+            "And everywhere I went, I kept meeting the same person. Different faces. Same eyes. People who were exhausted from trying everything, and quietly wondering why none of it was working.",
+            "One in four adults are on antidepressants. People are sick. People are sad. And the solutions most of them have access to — therapy at $7,800 a year, coaching at $500 a session, meditation apps that most people quit in a week — aren't reaching them.",
+            "I didn't want to build another wellness app. I wanted to build the simplest, fastest, most joyful way for someone to change their life — using the two tools their brain was already built to respond to.",
+            "So we made Lovify.",
+            "You tell it your dream. You pick your sound. You upload a photo. And Lovify turns all of it into a personalized song and a vision of YOU living that life — in under two minutes.",
+            "Every song is tuned to 432Hz, the frequency your body naturally falls into coherence with.",
+            "Every lyric is written to place you inside your dream life — not to tell your brain what to believe, but to let your brain FEEL what it's like to already be there.",
+            "Every vision is you. Living it. Before you've lived it.",
+            "And when you press play every morning, your brain finally has a new program to run. One you chose.",
+          ],
+        },
+        {
+          heading: "Our Mission",
+          body: [
+            "We believe change is possible. And we believe it can be easy, fun, and playful.",
+            "We're not asking you to buy crystals. We're not asking you to sit in silence for an hour. We're not asking you to believe in anything you can't feel for yourself.",
+            "We're just saying this: If you get clear on your dream, feel it, see it, and repeat it daily — you can change your life.",
+            "Your brain is the most powerful instrument you will ever own. You've just been using it wrong. Lovify is how we put it back in your hands.",
+            "That's the whole mission. Everything we build at Lovify ladders up to this one thing: helping as many people as possible understand that their life can change — and giving them the easiest possible way to start.",
+            "Press play. That's all you have to do. The rest takes care of itself.",
+          ],
         },
       ],
+      signoff: {
+        closing: "With love,",
+        name: "Kaitlin O'Toole",
+        role: "Founder, Lovify",
+      },
     },
 
     careers: {
