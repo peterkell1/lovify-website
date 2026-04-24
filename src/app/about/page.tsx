@@ -8,27 +8,19 @@ export const metadata: Metadata = {
   description: site.pages.about.subtitle,
 };
 
-type ImageItem = { src: string; alt: string };
-
-const imageGridClasses = (count: number) => {
-  if (count === 1) return "grid grid-cols-1";
-  if (count === 2) return "grid grid-cols-1 gap-4 sm:grid-cols-2";
-  return "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3";
-};
+type ImageItem = { src: string; alt: string; width: number; height: number };
 
 const SectionImages = ({ images }: { images: readonly ImageItem[] }) => (
-  <div className={`mb-10 ${imageGridClasses(images.length)}`}>
+  <div className="mb-10 flex flex-col gap-4">
     {images.map((img) => (
-      <div
-        key={img.src}
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-cream"
-      >
+      <div key={img.src} className="overflow-hidden rounded-3xl">
         <Image
           src={img.src}
           alt={img.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+          width={img.width}
+          height={img.height}
+          className="h-auto w-full"
+          sizes="(max-width: 768px) 100vw, 768px"
         />
       </div>
     ))}
