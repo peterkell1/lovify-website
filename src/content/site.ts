@@ -18,10 +18,12 @@ export const site = {
   brand: {
     name: "Lovify",
     logo: "/lovify-logo.png",
-    tagline: "Transform Your Life Through Music",
+    tagline: "Press Play On The Life You Love",
     description:
-      "The first app that uses personalized music and visualization to reprogram your subconscious mind and create the life you want.",
+      "Lovify turns your dreams into music you can feel and visions you can see. The easiest, most fun way to create a life you love.",
     copyright: "© Lovify Inc. 2026",
+    /** Canonical domain used for absolute OG image URLs, sitemaps, etc. */
+    url: "https://trylovify.com",
   },
 
   /* --------------------------------------------------------------------- */

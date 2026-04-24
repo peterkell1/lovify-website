@@ -9,9 +9,37 @@ const archivo = Archivo({
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
+const pageTitle = `${site.brand.name} — ${site.brand.tagline}`;
+
 export const metadata: Metadata = {
-  title: `${site.brand.name} — ${site.brand.tagline}`,
+  metadataBase: new URL(site.brand.url),
+  title: pageTitle,
   description: site.brand.description,
+  openGraph: {
+    type: "website",
+    url: site.brand.url,
+    siteName: site.brand.name,
+    title: pageTitle,
+    description: site.brand.description,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: site.brand.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: site.brand.description,
+    images: ["/og-image.jpg"],
+  },
+  icons: {
+    icon: site.brand.logo,
+    apple: site.brand.logo,
+  },
 };
 
 const RootLayout = ({
