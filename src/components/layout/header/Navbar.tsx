@@ -42,31 +42,31 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.625,0.05,0,1)]"
       style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)" }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 mt-6">
+      <div className="mx-auto mt-6 flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
         {/* Logo — top left */}
         <Link
           href="/"
-          className={`font-heading flex items-center gap-2 text-2xl font-extrabold tracking-tight transition-colors duration-300 ${textColor}`}
+          className={`font-heading flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight transition-colors duration-300 sm:text-2xl ${textColor}`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={site.brand.logo} alt="" className="size-8 shrink-0" />
+          <img src={site.brand.logo} alt="" className="size-7 shrink-0 sm:size-8" />
           <span>{site.brand.name}</span>
         </Link>
 
         {/* Right side — nav links + download CTA */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-6">
           {site.nav.links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`font-heading text-base font-medium transition-colors duration-300 ${linkColor}`}
+              className={`font-heading hidden whitespace-nowrap text-base font-medium transition-colors duration-300 sm:inline ${linkColor}`}
             >
               {link.label}
             </Link>
           ))}
           <Link
             href={site.cta.downloadHref}
-            className={`font-heading rounded-full px-5 py-2.5 text-base font-medium transition-colors duration-300 ${downloadBg}`}
+            className={`font-heading whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 sm:px-5 sm:py-2.5 sm:text-base ${downloadBg}`}
           >
             {site.cta.downloadLabel}
           </Link>
