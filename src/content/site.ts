@@ -38,8 +38,9 @@ export const site = {
   /*  NAVBAR                                                               */
   /* --------------------------------------------------------------------- */
   nav: {
-    links: ["About us", "Blog", "Download App"] as string[],
-    mobileLinks: ["About us", "Blog"] as string[],
+    links: [
+      { label: "About us", href: "/about" },
+    ],
   },
 
   /* --------------------------------------------------------------------- */
