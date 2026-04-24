@@ -357,6 +357,10 @@ export const site = {
       eyebrow: "About us",
       title: "You Are Not Broken. Your Program Is.",
       subtitle: "Hi, I'm Kaitlin.",
+      heroImage: {
+        src: "/kaitlin/web-01-before-after-split.jpg",
+        alt: "Kaitlin before and after — the transformation at the heart of Lovify",
+      },
       intro: [
         "If you found your way here, there's a good chance you've tried a lot of things already. Maybe therapy. Maybe meditation. Maybe journaling, affirmations, vision boards, cold plunges, retreats, podcasts, supplements. Maybe all of it.",
         "And somewhere inside, you're still quietly asking — why isn't any of this working?",
@@ -365,6 +369,10 @@ export const site = {
       sections: [
         {
           heading: "How I Got Here",
+          images: [
+            { src: "/kaitlin/web-10-mtv-red-carpet.jpg", alt: "Kaitlin on the MTV red carpet" },
+            { src: "/kaitlin/web-12-illness-triptych.jpg", alt: "The nine-year illness — Kaitlin's journey through lupus, Lyme, and scleroderma" },
+          ],
           body: [
             "I was 26 years old, working at MTV in Times Square, prepping for the VMAs — the career I'd dreamed about my whole life. And then my mom called. My brother Sean — my best friend, 18 months older than me — had tried to take his own life.",
             "I flew home that night. I walked into his hospital room, fell to my knees at his bedside, and begged God: \"Just give me what he has. Let him live. I'll take it.\"",
@@ -411,6 +419,11 @@ export const site = {
         },
         {
           heading: "Why We Built Lovify",
+          images: [
+            { src: "/kaitlin/web-13-sports-illustrated-host.jpg", alt: "Kaitlin hosting for Sports Illustrated" },
+            { src: "/kaitlin/web-14-mindvalley-massive-stage.jpg", alt: "Kaitlin on the Mindvalley main stage" },
+            { src: "/kaitlin/web-04-mindvalley-stage-sparks.jpg", alt: "Kaitlin speaking at Mindvalley" },
+          ],
           body: [
             "After I healed, my life opened up in ways I never imagined. I went from Sports Illustrated to hosting for Mindvalley, standing on stages in front of thousands of people, interviewing the biggest names in personal development.",
             "And everywhere I went, I kept meeting the same person. Different faces. Same eyes. People who were exhausted from trying everything, and quietly wondering why none of it was working.",
@@ -426,6 +439,9 @@ export const site = {
         },
         {
           heading: "Our Mission",
+          images: [
+            { src: "/kaitlin/web-08-red-suit-portrait.jpg", alt: "Kaitlin O'Toole, founder of Lovify" },
+          ],
           body: [
             "We believe change is possible. And we believe it can be easy, fun, and playful.",
             "We're not asking you to buy crystals. We're not asking you to sit in silence for an hour. We're not asking you to believe in anything you can't feel for yourself.",
