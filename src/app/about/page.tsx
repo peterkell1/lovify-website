@@ -38,9 +38,9 @@ const SectionImages = ({ images }: { images: readonly ImageItem[] }) => (
 export default function AboutPage() {
   const p = site.pages.about;
   return (
-    <PageShell eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle}>
+    <PageShell eyebrow={p.eyebrow} title={p.title}>
       {p.heroImage && (
-        <div className="-mt-4 mb-16 overflow-hidden rounded-3xl md:mb-20 md:-mt-6">
+        <div className="-mt-4 mb-12 overflow-hidden rounded-3xl md:mb-16 md:-mt-6">
           <Image
             src={p.heroImage.src}
             alt={p.heroImage.alt}
@@ -52,6 +52,10 @@ export default function AboutPage() {
           />
         </div>
       )}
+
+      <p className="mb-8 text-center font-heading text-xl font-semibold text-black md:text-2xl">
+        {p.subtitle}
+      </p>
 
       <div className="flex flex-col gap-6 text-lg leading-relaxed text-text-sub md:text-xl">
         {p.intro.map((para, i) => (
@@ -88,6 +92,18 @@ export default function AboutPage() {
           {p.signoff.name}
         </p>
         <p className="mt-1 text-base text-text-light">{p.signoff.role}</p>
+        {p.signoff.image && (
+          <div className="mt-10 overflow-hidden rounded-3xl">
+            <Image
+              src={p.signoff.image.src}
+              alt={p.signoff.image.alt}
+              width={1000}
+              height={1000}
+              className="h-auto w-full"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        )}
       </div>
     </PageShell>
   );

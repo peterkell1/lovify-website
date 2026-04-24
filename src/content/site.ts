@@ -371,7 +371,6 @@ export const site = {
           heading: "How I Got Here",
           images: [
             { src: "/kaitlin/web-10-mtv-red-carpet.jpg", alt: "Kaitlin on the MTV red carpet" },
-            { src: "/kaitlin/web-12-illness-triptych.jpg", alt: "The nine-year illness — Kaitlin's journey through lupus, Lyme, and scleroderma" },
           ],
           body: [
             "I was 26 years old, working at MTV in Times Square, prepping for the VMAs — the career I'd dreamed about my whole life. And then my mom called. My brother Sean — my best friend, 18 months older than me — had tried to take his own life.",
@@ -386,6 +385,9 @@ export const site = {
         },
         {
           heading: "The Morning That Changed Everything",
+          images: [
+            { src: "/kaitlin/web-12-illness-triptych.jpg", alt: "The nine-year illness — Kaitlin's journey through lupus, Lyme, and scleroderma" },
+          ],
           body: [
             "After my body, my career, my relationship, and my home all collapsed at once, I found myself at my brother's house with a suitcase and nothing else. And one morning — I just decided I was done.",
             "Not done wanting to change. Actually, truly done with the old version of me.",
@@ -398,6 +400,9 @@ export const site = {
         },
         {
           heading: "What I Understand Now",
+          images: [
+            { src: "/kaitlin/web-08-red-suit-portrait.jpg", alt: "Kaitlin O'Toole, founder of Lovify" },
+          ],
           body: [
             "After I healed, I became obsessed with understanding WHY it worked. And what I learned changed how I see everything.",
             "Your brain is designed to keep you safe. And safe means familiar.",
@@ -409,6 +414,9 @@ export const site = {
         },
         {
           heading: "Why Music. Why Vision. Why Both.",
+          images: [
+            { src: "/kaitlin/web-07-mindvalley-intro-screen.jpg", alt: "Kaitlin speaking at Mindvalley on music and vision" },
+          ],
           body: [
             "When I started researching what actually worked, two things kept showing up:",
             "Music is the fastest way into the subconscious mind. It bypasses the conscious filter. It changes your emotional state in under 90 seconds. It's why a song from ten years ago can transport you back to who you were when you first heard it. Your subconscious doesn't listen to music the way your ears do — it RECORDS it.",
@@ -420,9 +428,7 @@ export const site = {
         {
           heading: "Why We Built Lovify",
           images: [
-            { src: "/kaitlin/web-13-sports-illustrated-host.jpg", alt: "Kaitlin hosting for Sports Illustrated" },
             { src: "/kaitlin/web-14-mindvalley-massive-stage.jpg", alt: "Kaitlin on the Mindvalley main stage" },
-            { src: "/kaitlin/web-04-mindvalley-stage-sparks.jpg", alt: "Kaitlin speaking at Mindvalley" },
           ],
           body: [
             "After I healed, my life opened up in ways I never imagined. I went from Sports Illustrated to hosting for Mindvalley, standing on stages in front of thousands of people, interviewing the biggest names in personal development.",
@@ -439,9 +445,6 @@ export const site = {
         },
         {
           heading: "Our Mission",
-          images: [
-            { src: "/kaitlin/web-08-red-suit-portrait.jpg", alt: "Kaitlin O'Toole, founder of Lovify" },
-          ],
           body: [
             "We believe change is possible. And we believe it can be easy, fun, and playful.",
             "We're not asking you to buy crystals. We're not asking you to sit in silence for an hour. We're not asking you to believe in anything you can't feel for yourself.",
@@ -456,6 +459,10 @@ export const site = {
         closing: "With love,",
         name: "Kaitlin O'Toole",
         role: "Founder, Lovify",
+        image: {
+          src: "/kaitlin/web-04-mindvalley-stage-sparks.jpg",
+          alt: "Kaitlin on the Mindvalley stage",
+        },
       },
     },
 
