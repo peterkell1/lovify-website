@@ -91,16 +91,29 @@ export const Footer = () => {
                 {column.title}
               </h3>
               <ul className="md:mt-3 mt-2 md:space-y-1.5 space-y-1">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="footer_link text-base font-medium text-text transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {column.links.map((link) => {
+                  const isExternal = link.href.startsWith("http");
+                  const linkClass =
+                    "footer_link text-base font-medium text-text transition-colors";
+                  return (
+                    <li key={link.label}>
+                      {isExternal ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={linkClass}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} className={linkClass}>
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

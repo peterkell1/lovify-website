@@ -302,7 +302,6 @@ export const site = {
         title: "Company",
         links: [
           { label: "About us", href: "/about" },
-          { label: "Blog", href: "/blog" },
         ],
       },
       {
@@ -321,8 +320,8 @@ export const site = {
       {
         title: "Legal",
         links: [
-          { label: "Terms of Service", href: "/terms" },
-          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Terms of Service", href: "https://go.trylovify.com/terms" },
+          { label: "Privacy Policy", href: "https://go.trylovify.com/privacy" },
         ],
       },
     ],
